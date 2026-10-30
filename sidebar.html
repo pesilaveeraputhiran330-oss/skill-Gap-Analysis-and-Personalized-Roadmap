@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Skill Navigator{% endblock %}</title>
+
+    <!-- Common CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/common.css') }}">
+
+    <!-- Page-specific CSS -->
+    {% block page_css %}{% endblock %}
+</head>
+
+<body>
+
+<div class="app-container">
+
+    <!-- ================= LEFT SIDEBAR ================= -->
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-compass"></i>
+            </div>
+
+            <div class="logo-text">
+                Skill<span>Navigator</span>
+            </div>
+        </div>
+
+
+        <!-- Navigation -->
+        <nav class="sidebar-menu">
+
+            <a href="{{ url_for('dashboard') }}"
+               class="menu-item {% if request.endpoint == 'dashboard' %}active{% endif %}">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="{{ url_for('profile') }}"
+               class="menu-item {% if request.endpoint == 'profile' %}active{% endif %}">
+                <i class="fa-solid fa-user"></i>
+                <span>Profile</span>
+            </a>
+
+            <a href="{{ url_for('career') }}"
+               class="menu-item {% if request.endpoint == 'career' %}active{% endif %}">
+                <i class="fa-solid fa-briefcase"></i>
+                <span>Career Role</span>
+            </a>
+
+            <a href="{{ url_for('skill_match') }}"
+               class="menu-item {% if request.endpoint == 'skill_match' %}active{% endif %}">
+                <i class="fa-solid fa-bullseye"></i>
+                <span>Skill Match</span>
+            </a>
+
+            <a href="{{ url_for('skill_gap') }}"
+               class="menu-item {% if request.endpoint == 'skill_gap' %}active{% endif %}">
+                <i class="fa-solid fa-chart-simple"></i>
+                <span>Skill Gap</span>
+            </a>
+
+            <a href="{{ url_for('roadmap') }}"
+               class="menu-item {% if request.endpoint == 'roadmap' %}active{% endif %}">
+                <i class="fa-solid fa-route"></i>
+                <span>Learning Roadmap</span>
+            </a>
+
+            <a href="{{ url_for('report') }}"
+               class="menu-item {% if request.endpoint == 'report' %}active{% endif %}">
+                <i class="fa-solid fa-file-lines"></i>
+                <span>Reports</span>
+            </a>
+
+        </nav>
+
+
+        <!-- Bottom -->
+        <div class="sidebar-bottom">
+
+            <a href="{{ url_for('logout') }}" class="menu-item logout">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= RIGHT SIDE ================= -->
+    <main class="main-content">
+
+        <!-- Topbar -->
+        <header class="topbar">
+
+            <div class="page-heading">
+                {% block page_heading %}
+                {% endblock %}
+            </div>
+
+            <div class="user-box">
+                <i class="fa-solid fa-user-circle"></i>
+
+                <span>
+                    {{ username }}
+                </span>
+            </div>
+
+        </header>
+
+
+        <!-- Page Content -->
+        <section class="content">
+
+            {% block content %}
+            {% endblock %}
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</body>
+</html>

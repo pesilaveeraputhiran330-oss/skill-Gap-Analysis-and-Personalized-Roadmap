@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Skill Match | Skill Navigator</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Common CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/common.css') }}">
+
+    <!-- Skill Match CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/skill_match.css') }}">
+
+</head>
+
+
+<body>
+
+
+<div class="page-wrapper">
+
+
+
+ <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+         <!-- BRAND -->
+        <div class="brand">
+
+            <div class="brand-icon">
+                <i class="fa-solid fa-brain"></i>
+            </div>
+
+            <div class="brand-text">
+                <h2>Skill Navigator</h2>
+                <span>AI Career Guidance</span>
+            </div>
+
+        </div>
+
+
+        <ul class="menu">
+
+            <!-- Home -->
+             <li>
+                
+                <a href="{{ url_for('home') }}">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+
+            <!-- Dashboard -->
+            <li>
+
+                <a href="{{ url_for('dashboard') }}">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    <span>Dashboard</span>
+
+                </a>
+
+            </li>
+
+
+            <!-- Profile -->
+            <li>
+
+                <a href="{{ url_for('profile') }}">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    <span>Profile</span>
+
+                </a>
+
+            </li>
+
+
+            <!-- Career Role -->
+            <li>
+
+                <a href="{{ url_for('career') }}">
+
+                    <i class="fa-solid fa-briefcase"></i>
+
+                    <span>Career Role</span>
+
+                </a>
+
+            </li>
+
+            <!-- Skill Match -->
+            <li class="active">
+
+                <a href="{{ url_for('skill_match') }}">
+
+                    <i class="fa-solid fa-code-compare"></i>
+
+                    <span>Skill Match</span>
+
+                </a>
+
+            </li>
+
+            <!-- Skill Gap -->
+            <li>
+
+                <a href="{{ url_for('skill_gap') }}">
+
+                    <i class="fa-solid fa-chart-column"></i>
+
+                    <span>Skill Gap</span>
+
+                </a>
+
+            </li>
+
+            <!-- Roadmap -->
+            <li>
+
+                <a href="{{ url_for('roadmap') }}">
+
+                    <i class="fa-solid fa-route"></i>
+
+                    <span>Roadmap</span>
+
+                </a>
+
+            </li>
+
+
+            <!-- Report -->
+            <li>
+
+                <a href="{{ url_for('report') }}">
+
+                    <i class="fa-solid fa-file-lines"></i>
+
+                    <span>Report</span>
+
+                </a>
+
+            </li>
+
+
+            <!-- Logout -->
+            <li class="logout">
+
+                <a href="{{ url_for('logout') }}">
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                    <span>Logout</span>
+
+                </a>
+
+            </li>
+
+        </ul>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOP HEADER
+        ================================================== -->
+
+        <div class="top-header">
+
+
+            <div>
+
+                <div class="small-title">
+
+                    SKILL ANALYSIS
+
+                </div>
+
+
+                <h1>
+
+                    Skill Match
+
+                </h1>
+
+
+                <p>
+
+                    Compare your current skills with the skills
+                    required for your selected career.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- USER -->
+
+            <div class="user-area">
+
+
+                <div class="user-info">
+
+                    <strong>
+
+                        {{ session.get('username', 'User') }}
+
+                    </strong>
+
+                    <span>
+
+                        Career Explorer
+
+                    </span>
+
+                </div>
+
+
+
+                <div class="user-icon">
+
+                    <i class="fa-solid fa-user"></i>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             FLASH MESSAGE
+        ================================================== -->
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+
+            {% if messages %}
+
+                <div class="flash-container">
+
+                    {% for category, message in messages %}
+
+                        <div class="flash-message {{ category }}">
+
+                            {% if category == "success" %}
+
+                                <i class="fa-solid fa-circle-check"></i>
+
+                            {% elif category == "danger" %}
+
+                                <i class="fa-solid fa-circle-exclamation"></i>
+
+                            {% else %}
+
+                                <i class="fa-solid fa-circle-info"></i>
+
+                            {% endif %}
+
+                            <span>
+
+                                {{ message }}
+
+                            </span>
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% endif %}
+
+        {% endwith %}
+
+
+
+        <!-- =================================================
+             CAREER ROLE
+        ================================================== -->
+
+        {% if career_role %}
+
+
+        <section class="career-header">
+
+
+            <div class="career-header-left">
+
+
+                <span class="small-title">
+
+                    SELECTED CAREER ROLE
+
+                </span>
+
+
+                <!-- IMPORTANT:
+                     This comes ONLY from user's selected career -->
+
+                <h2>
+
+                    {{ career_role }}
+
+                </h2>
+
+
+                <p>
+
+                    Your current skills are compared with the
+                    skills required for this career role.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="career-icon">
+
+                <i class="fa-solid fa-briefcase"></i>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             SKILL MATCH GRID
+        ================================================== -->
+
+        <section class="skill-match-grid">
+
+
+
+            <!-- =================================================
+                 YOUR SKILLS
+            ================================================== -->
+
+            <div class="glass-card">
+
+
+                <div class="card-heading">
+
+
+                    <div class="card-heading-icon">
+
+                        <i class="fa-solid fa-user-check"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+
+                            Your Skills
+
+                        </h3>
+
+
+                        <p>
+
+                            Skills entered by you
+
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="skill-list">
+
+
+                    {% if current_skills %}
+
+
+                        {% for skill in current_skills.split(',') %}
+
+
+                            {% set current_skill = skill.strip() %}
+
+
+                            {% if current_skill %}
+
+
+                                <div class="skill-item">
+
+
+                                    <div class="skill-name">
+
+                                        <i class="fa-solid fa-code"></i>
+
+                                        <span>
+
+                                            {{ current_skill }}
+
+                                        </span>
+
+                                    </div>
+
+
+
+                                    <!-- Check whether current
+                                         skill exists in matched skills -->
+
+                                    {% set ns = namespace(found=false) %}
+
+
+                                    {% for matched in matched_skills %}
+
+
+                                        {% if matched|lower|trim
+                                              == current_skill|lower|trim %}
+
+                                            {% set ns.found = true %}
+
+                                        {% endif %}
+
+
+                                    {% endfor %}
+
+
+
+                                    {% if ns.found %}
+
+
+                                        <div class="skill-status match">
+
+                                            <i class="fa-solid fa-circle-check"></i>
+
+                                            Matched
+
+                                        </div>
+
+
+                                    {% else %}
+
+
+                                        <div class="skill-status basic">
+
+                                            <i class="fa-solid fa-circle-info"></i>
+
+                                            Available
+
+                                        </div>
+
+
+                                    {% endif %}
+
+
+                                </div>
+
+
+                            {% endif %}
+
+
+                        {% endfor %}
+
+
+                    {% else %}
+
+
+                        <div class="empty-skill">
+
+                            <i class="fa-solid fa-circle-info"></i>
+
+                            <p>
+
+                                No current skills entered.
+
+                            </p>
+
+                        </div>
+
+
+                    {% endif %}
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 REQUIRED SKILLS FROM DATASET
+            ================================================== -->
+
+            <div class="glass-card">
+
+
+                <div class="card-heading">
+
+
+                    <div class="card-heading-icon">
+
+                        <i class="fa-solid fa-list-check"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+
+                            Required Skills
+
+                        </h3>
+
+
+                        <p>
+
+                            Required for {{ career_role }}
+
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="skill-list">
+
+
+                    {% if required_skills %}
+
+
+                        {% for skill in required_skills %}
+
+
+                            <div class="skill-item">
+
+
+                                <div class="skill-name">
+
+                                    <i class="fa-solid fa-layer-group"></i>
+
+                                    <span>
+
+                                        {{ skill }}
+
+                                    </span>
+
+                                </div>
+
+
+
+                                <!-- Check matched -->
+
+                                {% set ns = namespace(found=false) %}
+
+
+                                {% for matched in matched_skills %}
+
+
+                                    {% if matched|lower|trim
+                                          == skill|lower|trim %}
+
+                                        {% set ns.found = true %}
+
+                                    {% endif %}
+
+
+                                {% endfor %}
+
+
+
+                                {% if ns.found %}
+
+
+                                    <div class="skill-status match">
+
+                                        <i class="fa-solid fa-check"></i>
+
+                                        Found
+
+                                    </div>
+
+
+                                {% else %}
+
+
+                                    <div class="skill-status missing">
+
+                                        <i class="fa-solid fa-xmark"></i>
+
+                                        Missing
+
+                                    </div>
+
+
+                                {% endif %}
+
+
+                            </div>
+
+
+                        {% endfor %}
+
+
+                    {% else %}
+
+
+                        <div class="empty-skill">
+
+                            <i class="fa-solid fa-circle-info"></i>
+
+                            <p>
+
+                                No required skills found.
+
+                            </p>
+
+                        </div>
+
+
+                    {% endif %}
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 MATCH SCORE
+            ================================================== -->
+
+            <div class="glass-card match-score-card">
+
+
+                <!-- SCORE -->
+
+                <div class="score-circle">
+
+
+                    <div class="score">
+
+                        {% if match_percentage is defined %}
+
+                            {{ match_percentage|round(0)|int }}%
+
+                        {% else %}
+
+                            0%
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <span>
+
+                        Match Score
+
+                    </span>
+
+
+                </div>
+
+
+
+                <!-- CONTENT -->
+
+                <div class="score-content">
+
+
+                    <span class="section-label">
+
+                        CAREER READINESS
+
+                    </span>
+
+
+                    <h3>
+
+                        Your Career Skill Match
+
+                    </h3>
+
+
+
+                    <p>
+
+
+                        {% if match_percentage is defined
+                              and match_percentage >= 80 %}
+
+
+                            Excellent! Your skills strongly match
+                            the requirements of this career.
+
+
+                        {% elif match_percentage is defined
+                              and match_percentage >= 50 %}
+
+
+                            You have a good foundation.
+                            Improve your missing skills to increase
+                            your career readiness.
+
+
+                        {% else %}
+
+
+                            Focus on the missing skills to improve
+                            your career readiness.
+
+
+                        {% endif %}
+
+
+                    </p>
+
+
+
+                    <!-- PROGRESS -->
+
+                    <div class="progress-container">
+
+
+                        <div class="progress-top">
+
+
+                            <span>
+
+                                Overall Skill Match
+
+                            </span>
+
+
+                            <span>
+
+
+                                {% if match_percentage is defined %}
+
+                                    {{ match_percentage|round(0)|int }}%
+
+                                {% else %}
+
+                                    0%
+
+                                {% endif %}
+
+
+                            </span>
+
+
+                        </div>
+
+
+
+                        <div class="progress-bar">
+
+
+                            <div class="progress-fill"
+
+                                 style="width:
+                                 {{ match_percentage|default(0) }}%;">
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         STATISTICS
+                    ================================================== -->
+
+                    <div class="match-stats">
+
+
+                        <!-- MATCHED -->
+
+                        <div class="stat-box matched">
+
+
+                            <div class="stat-icon">
+
+                                <i class="fa-solid fa-check"></i>
+
+                            </div>
+
+
+                            <h4>
+
+                                {{ matched_skills|length }}
+
+                            </h4>
+
+
+                            <p>
+
+                                Matched Skills
+
+                            </p>
+
+
+                        </div>
+
+
+
+                        <!-- MISSING -->
+
+                        <div class="stat-box missing">
+
+
+                            <div class="stat-icon">
+
+                                <i class="fa-solid fa-xmark"></i>
+
+                            </div>
+
+
+                            <h4>
+
+                                {{ missing_skills|length }}
+
+                            </h4>
+
+
+                            <p>
+
+                                Missing Skills
+
+                            </p>
+
+
+                        </div>
+
+
+
+                        <!-- TOTAL -->
+
+                        <div class="stat-box total">
+
+
+                            <div class="stat-icon">
+
+                                <i class="fa-solid fa-list"></i>
+
+                            </div>
+
+
+                            <h4>
+
+                                {{ required_skills|length }}
+
+                            </h4>
+
+
+                            <p>
+
+                                Total Skills
+
+                            </p>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 COMPARISON TABLE
+            ================================================== -->
+
+            <div class="glass-card comparison-card">
+
+
+                <div class="card-heading">
+
+
+                    <div class="card-heading-icon">
+
+                        <i class="fa-solid fa-table"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+
+                            Skill Comparison
+
+                        </h3>
+
+
+                        <p>
+
+                            Your skills vs required skills
+
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="table-wrapper">
+
+
+                    <table class="comparison-table">
+
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Skill
+                                </th>
+
+                                <th>
+                                    Your Skill
+                                </th>
+
+                                <th>
+                                    Required
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+
+                        <tbody>
+
+
+                            {% if required_skills %}
+
+
+                                {% for skill in required_skills %}
+
+
+                                    {% set ns = namespace(found=false) %}
+
+
+                                    {% for matched in matched_skills %}
+
+
+                                        {% if matched|lower|trim
+                                              == skill|lower|trim %}
+
+                                            {% set ns.found = true %}
+
+                                        {% endif %}
+
+
+                                    {% endfor %}
+
+
+
+                                    <tr>
+
+
+                                        <!-- SKILL -->
+
+                                        <td>
+
+                                            <strong>
+
+                                                {{ skill }}
+
+                                            </strong>
+
+                                        </td>
+
+
+
+                                        <!-- USER SKILL -->
+
+                                        <td>
+
+
+                                            {% if ns.found %}
+
+
+                                                <span class="level strong-level">
+
+                                                    <i class="fa-solid fa-circle-check"></i>
+
+                                                    Available
+
+                                                </span>
+
+
+                                            {% else %}
+
+
+                                                <span class="level weak-level">
+
+                                                    <i class="fa-solid fa-minus"></i>
+
+                                                    Not Available
+
+                                                </span>
+
+
+                                            {% endif %}
+
+
+                                        </td>
+
+
+
+                                        <!-- REQUIRED -->
+
+                                        <td>
+
+                                            <span class="required-text">
+
+                                                Required
+
+                                            </span>
+
+                                        </td>
+
+
+
+                                        <!-- STATUS -->
+
+                                        <td>
+
+
+                                            {% if ns.found %}
+
+
+                                                <span class="badge match">
+
+                                                    <i class="fa-solid fa-check"></i>
+
+                                                    Matched
+
+                                                </span>
+
+
+                                            {% else %}
+
+
+                                                <span class="badge missing">
+
+                                                    <i class="fa-solid fa-xmark"></i>
+
+                                                    Missing
+
+                                                </span>
+
+
+                                            {% endif %}
+
+
+                                        </td>
+
+
+                                    </tr>
+
+
+                                {% endfor %}
+
+
+                            {% else %}
+
+
+                                <tr>
+
+                                    <td colspan="4"
+                                        class="empty-table">
+
+                                        No required skills available.
+
+                                    </td>
+
+                                </tr>
+
+
+                            {% endif %}
+
+
+                        </tbody>
+
+
+                    </table>
+
+
+                </div>
+
+
+
+                <!-- BUTTONS -->
+
+              <div class="button-area">
+                
+                <a href="{{ url_for('skill_gap') }}" class="action-btn">
+                    View Skill Gap
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                
+                <a href="{{ url_for('roadmap') }}" class="action-btn">
+                    Learning Roadmap
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        
+        </section>
+
+        {% else %}
+
+
+        <!-- =================================================
+             NO CAREER SELECTED
+        ================================================== -->
+
+        <section class="no-career-card">
+
+
+            <div class="no-career-icon">
+
+                <i class="fa-solid fa-briefcase"></i>
+
+            </div>
+
+
+            <h2>
+
+                No Career Role Selected
+
+            </h2>
+
+
+            <p>
+
+                Please select a career role from the Career Role
+                page and enter your current skills before viewing
+                the Skill Match analysis.
+
+            </p>
+
+
+            <a href="{{ url_for('career') }}"
+               class="btn btn-primary">
+
+                Select Career Role
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+
+        </section>
+
+
+        {% endif %}
+
+
+    </main>
+
+
+</div>
+
+
+</body>
+
+</html>

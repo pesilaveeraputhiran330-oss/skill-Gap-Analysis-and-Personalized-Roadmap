@@ -1,0 +1,710 @@
+/* =========================================================
+   SKILL NAVIGATOR
+   COMMON CSS
+   Transparent Glass Sidebar
+========================================================= */
+
+
+/* =========================================================
+   GOOGLE FONT
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    color: #ffffff;
+    background:
+        radial-gradient(circle at 10% 20%, rgba(84, 90, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(0, 210, 255, 0.15), transparent 30%),
+        linear-gradient(135deg, #080b18, #0d1124 50%, #090d1d);
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   LINKS
+========================================================= */
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* =========================================================
+   BACKGROUND SHAPES
+========================================================= */
+
+.background-shape {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(90px);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.shape-one {
+    width: 300px;
+    height: 300px;
+    top: -100px;
+    left: -100px;
+    background: rgba(91, 95, 255, 0.18);
+}
+
+.shape-two {
+    width: 350px;
+    height: 350px;
+    right: -120px;
+    bottom: -100px;
+    background: rgba(0, 200, 255, 0.12);
+}
+
+
+/* =========================================================
+   MAIN APP CONTAINER
+========================================================= */
+
+.app-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+    width: 270px;
+    min-height: 100vh;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 28px 18px;
+
+    background: rgba(255, 255, 255, 0.055);
+
+    border-right: 1px solid rgba(255, 255, 255, 0.10);
+
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+
+    box-shadow:
+        10px 0 40px rgba(0, 0, 0, 0.15);
+
+    z-index: 1000;
+}
+
+
+/* =========================================================
+   SIDEBAR HEADER
+========================================================= */
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 5px 10px 30px;
+}
+
+
+.logo-icon {
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: linear-gradient(
+        135deg,
+        #6675ff,
+        #8a5cff
+    );
+
+    box-shadow:
+        0 8px 25px rgba(102, 117, 255, 0.35);
+}
+
+
+.logo-icon i {
+    font-style: normal;
+    font-size: 14px;
+    font-weight: 800;
+    color: white;
+}
+
+
+.logo-text h2 {
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+
+.logo-text span {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 9px;
+    font-weight: 400;
+
+    color: rgba(255, 255, 255, 0.52);
+
+    letter-spacing: 0.4px;
+}
+
+
+/* =========================================================
+   MENU TITLE
+========================================================= */
+
+.menu-title {
+    padding: 0 13px;
+    margin-bottom: 10px;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    color: rgba(255, 255, 255, 0.35);
+
+    letter-spacing: 1.2px;
+}
+
+
+/* =========================================================
+   SIDEBAR NAVIGATION
+========================================================= */
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+
+/* =========================================================
+   NAV ITEM
+========================================================= */
+
+.nav-item {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    min-height: 49px;
+
+    padding: 0 14px;
+
+    border-radius: 13px;
+
+    color: rgba(255, 255, 255, 0.62);
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.nav-item:hover {
+    color: #ffffff;
+
+    background: rgba(255, 255, 255, 0.075);
+
+    transform: translateX(3px);
+}
+
+
+/* =========================================================
+   ACTIVE NAV ITEM
+========================================================= */
+
+.nav-item.active {
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(102, 117, 255, 0.30),
+            rgba(138, 92, 255, 0.18)
+        );
+
+    border: 1px solid rgba(126, 137, 255, 0.18);
+
+    box-shadow:
+        0 8px 25px rgba(80, 90, 255, 0.12);
+}
+
+
+.nav-item.active::before {
+    content: "";
+
+    position: absolute;
+
+    left: -18px;
+
+    width: 3px;
+    height: 28px;
+
+    border-radius: 0 5px 5px 0;
+
+    background: #7b83ff;
+
+    box-shadow:
+        0 0 15px rgba(123, 131, 255, 0.8);
+}
+
+
+/* =========================================================
+   NAV ICON
+========================================================= */
+
+.nav-icon {
+    width: 25px;
+    height: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 17px;
+
+    color: rgba(255, 255, 255, 0.55);
+
+    transition: 0.25s ease;
+}
+
+
+.nav-item.active .nav-icon {
+    color: #9da5ff;
+}
+
+
+.nav-item:hover .nav-icon {
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   NAV TEXT
+========================================================= */
+
+.nav-text {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   SIDEBAR BOTTOM
+========================================================= */
+
+.sidebar-bottom {
+    margin-top: auto;
+}
+
+
+/* =========================================================
+   HELP BOX
+========================================================= */
+
+.help-box {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 14px;
+
+    margin-bottom: 14px;
+
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.045);
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+
+.help-icon {
+    width: 30px;
+    height: 30px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background: rgba(105, 117, 255, 0.18);
+
+    color: #9da5ff;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+.help-box h4 {
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+.help-box p {
+    margin-top: 2px;
+
+    font-size: 8px;
+
+    color: rgba(255, 255, 255, 0.42);
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    height: 47px;
+
+    padding: 0 14px;
+
+    border-radius: 12px;
+
+    color: rgba(255, 255, 255, 0.55);
+
+    transition: 0.25s ease;
+}
+
+
+.logout-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.07);
+}
+
+
+.logout-icon {
+    font-size: 19px;
+}
+
+
+.logout-btn span:last-child {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.main-content {
+    width: calc(100% - 270px);
+
+    min-height: 100vh;
+
+    margin-left: 270px;
+
+    padding: 0 35px;
+}
+
+
+/* =========================================================
+   TOPBAR
+========================================================= */
+
+.topbar {
+    min-height: 105px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+
+/* =========================================================
+   PAGE HEADING
+========================================================= */
+
+.page-heading h1 {
+    font-size: 24px;
+    font-weight: 700;
+
+    letter-spacing: -0.4px;
+}
+
+
+.page-heading p {
+    margin-top: 4px;
+
+    font-size: 11px;
+
+    color: rgba(255, 255, 255, 0.42);
+}
+
+
+/* =========================================================
+   USER AREA
+========================================================= */
+
+.user-area {
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+}
+
+
+/* =========================================================
+   NOTIFICATION
+========================================================= */
+
+.notification {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+
+.notification:hover {
+    background: rgba(255, 255, 255, 0.09);
+}
+
+
+/* =========================================================
+   USER PROFILE
+========================================================= */
+
+.user-profile {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        #6573ff,
+        #8c5dff
+    );
+
+    font-size: 14px;
+    font-weight: 700;
+
+    box-shadow:
+        0 6px 18px rgba(102, 117, 255, 0.25);
+}
+
+
+.user-info h4 {
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+.user-info span {
+    display: block;
+
+    margin-top: 2px;
+
+    font-size: 8px;
+
+    color: rgba(255, 255, 255, 0.40);
+}
+
+
+/* =========================================================
+   CONTENT AREA
+========================================================= */
+
+.content-area {
+    padding: 30px 0 50px;
+}
+
+
+/* =========================================================
+   COMMON GLASS CARD
+========================================================= */
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.055);
+
+    border: 1px solid rgba(255, 255, 255, 0.09);
+
+    border-radius: 18px;
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .sidebar {
+        width: 225px;
+    }
+
+    .main-content {
+        width: calc(100% - 225px);
+        margin-left: 225px;
+        padding: 0 25px;
+    }
+
+    .logo-text h2 {
+        font-size: 15px;
+    }
+
+    .nav-text {
+        font-size: 12px;
+    }
+}
+
+
+@media (max-width: 760px) {
+
+    .sidebar {
+        width: 72px;
+        padding: 22px 10px;
+    }
+
+    .sidebar-header {
+        justify-content: center;
+        padding: 5px 0 28px;
+    }
+
+    .logo-text {
+        display: none;
+    }
+
+    .menu-title {
+        display: none;
+    }
+
+    .nav-item {
+        justify-content: center;
+        padding: 0;
+    }
+
+    .nav-text {
+        display: none;
+    }
+
+    .nav-item.active::before {
+        left: -10px;
+    }
+
+    .help-box {
+        display: none;
+    }
+
+    .logout-btn {
+        justify-content: center;
+        padding: 0;
+    }
+
+    .logout-btn span:last-child {
+        display: none;
+    }
+
+    .main-content {
+        width: calc(100% - 72px);
+        margin-left: 72px;
+        padding: 0 18px;
+    }
+
+    .user-info {
+        display: none;
+    }
+
+    .page-heading h1 {
+        font-size: 19px;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .topbar {
+        min-height: 85px;
+    }
+
+    .content-area {
+        padding-top: 20px;
+    }
+
+    .notification {
+        display: none;
+    }
+}

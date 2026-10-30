@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Skill Gap Analysis - Skill Navigator</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <!-- Skill Gap CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/skill_gap.css') }}">
+</head>
+
+<body>
+
+<div class="page-wrapper">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+         <!-- BRAND -->
+        <div class="brand">
+
+            <div class="brand-icon">
+                <i class="fa-solid fa-brain"></i><br>
+            </div>
+
+            
+        
+            <div class="brand-text">
+                <h2>Skill Navigator</h2>
+                <span>AI Career Guidance</span>
+            </div>
+
+        </div>
+
+
+        <ul class="menu">
+
+            <!-- Home -->
+             <li>
+                
+                <a href="{{ url_for('home') }}">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+
+            <!-- Dashboard -->
+            <li>
+
+                <a href="{{ url_for('dashboard') }}">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    <span>Dashboard</span>
+
+                </a>
+
+            </li>
+
+
+            <!-- Profile -->
+            <li>
+
+                <a href="{{ url_for('profile') }}">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    <span>Profile</span>
+
+                </a>
+
+            </li>
+
+
+            <!-- Career Role -->
+            <li>
+
+                <a href="{{ url_for('career') }}">
+
+                    <i class="fa-solid fa-briefcase"></i>
+
+                    <span>Career Role</span>
+
+                </a>
+
+            </li>
+
+            <!-- Skill Match -->
+            <li>
+
+                <a href="{{ url_for('skill_match') }}">
+
+                    <i class="fa-solid fa-code-compare"></i>
+
+                    <span>Skill Match</span>
+
+                </a>
+
+            </li>
+
+            <!-- Skill Gap -->
+            <li class="active">
+
+                <a href="{{ url_for('skill_gap') }}">
+
+                    <i class="fa-solid fa-chart-column"></i>
+
+                    <span>Skill Gap</span>
+
+                </a>
+
+            </li>            
+
+            <!-- Roadmap -->
+            <li>
+
+                <a href="{{ url_for('roadmap') }}">
+
+                    <i class="fa-solid fa-route"></i>
+
+                    <span>Roadmap</span>
+
+                </a>
+
+            </li>
+
+
+            <!-- Report -->
+            <li>
+
+                <a href="{{ url_for('report') }}">
+
+                    <i class="fa-solid fa-file-lines"></i>
+
+                    <span>Report</span>
+
+                </a>
+
+            </li>
+
+
+            <!-- Logout -->
+            <li class="logout">
+
+                <a href="{{ url_for('logout') }}">
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                    <span>Logout</span>
+
+                </a>
+
+            </li>
+
+        </ul>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+        <!-- TOP HEADER -->
+
+        <div class="top-header">
+
+            <div>
+
+                <div class="small-title">
+                    SKILL ANALYSIS
+                </div>
+
+                <h1>Skill Gap Analysis</h1>
+
+                <p>
+                    Identify your strengths and discover the skills you need
+                    to develop for your career.
+                </p>
+
+            </div>
+
+
+            <div class="user-area">
+
+                <div class="user-info">
+                    <strong>{{ session.get('username', 'User') }}</strong>
+                    <span>Career Explorer</span>
+                </div>
+
+                <div class="user-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+
+            </div>
+
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                <div class="flash-message {{ category }}">
+                    <i class="fas fa-check-circle"></i>
+                    <span>{{ message }}</span>
+                </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+
+        <!-- =================================================
+             SELECTED CAREER
+        ================================================== -->
+
+        <section class="career-card">
+
+            <div class="career-icon">
+                <i class="fas fa-briefcase"></i>
+            </div>
+
+            <div class="career-info">
+
+                <span class="section-label">
+                    SELECTED CAREER ROLE
+                </span>
+
+                <h2>
+                    {{ career_role }}
+                </h2>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             OVERALL SKILL STATUS
+        ================================================== -->
+
+        <section class="status-card">
+
+            <div class="circle-area">
+
+                <div class="progress-circle"
+                     style="--match-percent: {{ skill_gap_percentage }}%;">
+
+                    <div class="circle-inner">
+
+                        <strong>
+                            {{ skill_gap_percentage }}%
+                        </strong>
+
+                        <span>Skill Match</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="status-content">
+
+                <span class="section-label">
+                    YOUR SKILL STATUS
+                </span>
+
+
+                <h2>
+
+                    {% if match_percentage >= 80 %}
+
+                        Strong Skill Match
+
+                    {% elif match_percentage >= 50 %}
+
+                        Skills Need Improvement
+
+                    {% else %}
+
+                        Significant Skill Gap
+
+                    {% endif %}
+
+                </h2>
+
+
+                <p>
+                    Your current skills are compared with the skills
+                    required for <strong>{{ career_role }}</strong>.
+                </p>
+
+
+                <div class="progress-wrapper">
+
+                    <div class="progress-bar">
+
+                        <div class="progress-fill"
+                            style="width: {{ skill_gap_percentage }}%;">
+                        </div>
+
+                    </div>
+
+                    <div class="progress-text">
+                        {{ skill_gap_percentage }}% Skill Gap
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SKILL GAP CHART
+        ================================================== -->
+
+        <section class="chart-card">
+
+            <div class="card-heading">
+
+                <div class="heading-icon">
+                    <i class="fas fa-chart-column"></i>
+                </div>
+
+                <div>
+
+                    <h2>Skill Gap Overview</h2>
+
+                    <p>
+                        Your current skills compared with the skills
+                        required for the selected career.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="chart-container">
+
+                <canvas id="skillGapChart"></canvas>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SKILLS TO IMPROVE
+        ================================================== -->
+
+        <section class="improvement-section">
+
+            <div class="section-heading">
+
+                <span class="section-label">
+                    DEVELOPMENT AREAS
+                </span>
+
+                <h2>Skills Need Improvement</h2>
+
+                <p>
+                    These are the skills from the selected career
+                    that are currently missing from your skill set.
+                </p>
+
+            </div>
+
+
+            <div class="skill-grid">
+
+                {% if missing_skills %}
+
+                    {% for skill in missing_skills %}
+
+                    <div class="skill-card">
+
+                        <div class="skill-card-top">
+
+                            <div class="skill-symbol">
+
+                                {% if 'python' in skill|lower %}
+                                    <i class="fab fa-python"></i>
+
+                                {% elif 'sql' in skill|lower or 'database' in skill|lower %}
+                                    <i class="fas fa-database"></i>
+
+                                {% elif 'machine' in skill|lower or 'ai' in skill|lower %}
+                                    <i class="fas fa-robot"></i>
+
+                                {% elif 'statistics' in skill|lower or 'data' in skill|lower %}
+                                    <i class="fas fa-chart-simple"></i>
+
+                                {% else %}
+                                    <i class="fas fa-lightbulb"></i>
+                                {% endif %}
+
+                            </div>
+
+                            <span class="priority high">
+                                NEEDS WORK
+                            </span>
+
+                        </div>
+
+
+                        <h3>
+                            {{ skill }}
+                        </h3>
+
+
+                        <p>
+                            This skill is required for
+                            <strong>{{ career_role }}</strong>.
+                            Develop this skill to improve your career readiness.
+                        </p>
+
+
+                        <div class="skill-progress">
+
+                            <div class="skill-progress-bar">
+
+                                <div class="skill-progress-fill"
+                                     style="width: 0%;">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <div class="no-gap-card">
+
+                        <div class="no-gap-icon">
+                            <i class="fas fa-circle-check"></i>
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                No Skill Gap Found
+                            </h3>
+
+                            <p>
+                                You currently have all the required skills
+                                listed for {{ career_role }}.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             MATCHED SKILLS
+        ================================================== -->
+
+        <section class="matched-section">
+
+            <div class="section-heading">
+
+                <span class="section-label">
+                    YOUR STRENGTHS
+                </span>
+
+                <h2>Matched Skills</h2>
+
+                <p>
+                    These required career skills are already present
+                    in your current skill set.
+                </p>
+
+            </div>
+
+
+            <div class="matched-skill-list">
+
+                {% if matched_skills %}
+
+                    {% for skill in matched_skills %}
+
+                    <div class="matched-skill-item">
+
+                        <div class="matched-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+
+                        <span>
+                            {{ skill }}
+                        </span>
+
+                    </div>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <div class="empty-match">
+
+                        <i class="fas fa-info-circle"></i>
+
+                        <span>
+                            No required skills matched yet.
+                        </span>
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             ROADMAP CTA
+        ================================================== -->
+
+        <section class="roadmap-card">
+
+            <div class="roadmap-icon">
+                <i class="fas fa-route"></i>
+            </div>
+
+            <div class="roadmap-content">
+
+                <h2>
+                    Ready to close your skill gap?
+                </h2>
+
+                <p>
+                    Follow a personalized learning roadmap to develop
+                    the skills required for your career.
+                </p>
+
+            </div>
+
+            <a href="{{ url_for('roadmap') }}"
+               class="roadmap-btn">
+
+                View Learning Roadmap
+
+                <i class="fas fa-arrow-right"></i>
+
+            </a>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- =========================================================
+     DYNAMIC CHART
+========================================================= -->
+
+<script>
+
+const skillLabels = [
+    {% for skill in required_skills %}
+        {{ skill|tojson }}{% if not loop.last %},{% endif %}
+    {% endfor %}
+];
+
+
+const matchedSkills = [
+    {% for skill in required_skills %}
+        {% if skill in matched_skills %}
+            100
+        {% else %}
+            0
+        {% endif %}
+        {% if not loop.last %},{% endif %}
+    {% endfor %}
+];
+
+
+const requiredSkillLevel = [
+    {% for skill in required_skills %}
+        100{% if not loop.last %},{% endif %}
+    {% endfor %}
+];
+
+
+const ctx = document.getElementById('skillGapChart');
+
+
+new Chart(ctx, {
+
+    type: 'bar',
+
+    data: {
+
+        labels: skillLabels,
+
+        datasets: [
+
+            {
+                label: 'Your Current Skill',
+
+                data: matchedSkills,
+
+                borderWidth: 0,
+
+                borderRadius: 8,
+
+                barThickness: 30
+            },
+
+            {
+                label: 'Required Skill',
+
+                data: requiredSkillLevel,
+
+                borderWidth: 0,
+
+                borderRadius: 8,
+
+                barThickness: 30
+            }
+
+        ]
+
+    },
+
+    options: {
+
+        responsive: true,
+
+        maintainAspectRatio: false,
+
+        plugins: {
+
+            legend: {
+
+                display: true,
+
+                labels: {
+
+                    color: '#dcecff',
+
+                    font: {
+                        family: 'Poppins',
+                        size: 13
+                    }
+
+                }
+
+            }
+
+        },
+
+        scales: {
+
+            x: {
+
+                ticks: {
+
+                    color: '#dcecff',
+
+                    font: {
+                        family: 'Poppins',
+                        size: 12
+                    },
+
+                    maxRotation: 45,
+                    minRotation: 0
+
+                },
+
+                grid: {
+                    display: false
+                }
+
+            },
+
+            y: {
+
+                beginAtZero: true,
+
+                max: 100,
+
+                ticks: {
+
+                    color: '#a9c6e8',
+
+                    callback: function(value) {
+                        return value + '%';
+                    },
+
+                    font: {
+                        family: 'Poppins'
+                    }
+
+                },
+
+                grid: {
+                    color: 'rgba(255,255,255,0.08)'
+                }
+
+            }
+
+        }
+
+    }
+
+});
+
+</script>
+
+
+</body>
+</html>

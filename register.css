@@ -1,0 +1,313 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:
+    linear-gradient(rgba(5,15,40,.75),rgba(5,15,40,.75)),
+    url("../images/bg.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+}
+
+.overlay{
+
+    width:100%;
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+
+}
+
+.register-container{
+
+    width:100%;
+    max-width:1100px;
+
+    display:flex;
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:0 25px 50px rgba(0,0,0,.35);
+
+}
+
+/* ================= LEFT ================= */
+
+.left-panel{
+
+    flex:1;
+
+    padding:60px;
+
+    color:white;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+}
+
+.left-panel h1{
+
+    font-size:42px;
+
+    margin-bottom:20px;
+
+}
+
+.left-panel p{
+
+    color:#d8d8d8;
+
+    line-height:30px;
+
+    margin-bottom:35px;
+
+}
+
+.left-panel img{
+
+    width:100%;
+
+    max-width:580px;
+
+    height:auto;
+
+    margin-top:35px;
+
+}
+
+
+/* ================= RIGHT ================= */
+
+.right-panel{
+
+    flex:1;
+
+    background:rgba(8,20,60,.65);
+
+    padding:60px;
+
+}
+
+.right-panel h2{
+
+    color:white;
+
+    text-align:center;
+
+    font-size:34px;
+
+    margin-bottom:25px;
+
+}
+
+/* ================= ALERT ================= */
+
+.alert{
+
+    padding:14px;
+
+    border-radius:10px;
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+    font-weight:600;
+
+}
+
+.success{
+
+    background:#22c55e;
+
+    color:white;
+
+}
+
+.danger{
+
+    background:#ef4444;
+
+    color:white;
+
+}
+
+/* ================= INPUT ================= */
+
+.input-box{
+
+    display:flex;
+
+    align-items:center;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:12px;
+
+    margin-bottom:18px;
+
+    padding:15px;
+
+}
+
+.input-box i{
+
+    color:#35b5ff;
+
+    font-size:18px;
+
+    margin-right:12px;
+
+}
+
+.input-box input{
+
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    background:transparent;
+
+    color:white;
+
+    font-size:16px;
+
+}
+
+.input-box input::placeholder{
+
+    color:#ccc;
+
+}
+
+/* ================= BUTTON ================= */
+
+button{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:linear-gradient(90deg,#00c6ff,#0072ff);
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 15px 30px rgba(0,114,255,.35);
+
+}
+
+/* ================= LOGIN LINK ================= */
+
+.login-link{
+
+    margin-top:25px;
+
+    text-align:center;
+
+    color:#ddd;
+
+}
+
+.login-link a{
+
+    color:#35b5ff;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+}
+
+.login-link a:hover{
+
+    text-decoration:underline;
+
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+.register-container{
+
+    flex-direction:column;
+
+}
+
+.left-panel{
+
+    text-align:center;
+
+    padding:40px;
+
+}
+
+.right-panel{
+
+    padding:40px;
+
+}
+
+.left-panel img{
+
+    max-width:260px;
+
+}
+
+}

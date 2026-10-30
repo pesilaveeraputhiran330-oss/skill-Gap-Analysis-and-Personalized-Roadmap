@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Career Analysis Report</title>
+
+
+    <!-- =====================================================
+         GOOGLE FONT
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- =====================================================
+         REPORT CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/report.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="app-container">
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- BRAND -->
+
+        <div class="brand">
+
+            <div class="brand-icon">
+
+                <i class="fa-solid fa-brain"></i>
+
+            </div>
+
+
+            <div class="brand-text">
+
+                <h2>Skill Navigator</h2>
+
+                <span>AI Career Guidance</span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- MENU -->
+
+        <ul class="menu">
+
+            <!-- Home -->
+             <li>
+                
+                <a href="{{ url_for('home') }}">
+                    
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+
+
+            <!-- DASHBOARD -->
+
+            <li>
+
+                <a href="{{ url_for('dashboard') }}">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    <span>Dashboard</span>
+
+                </a>
+
+            </li>
+
+
+
+            <!-- PROFILE -->
+
+            <li>
+
+                <a href="{{ url_for('profile') }}">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    <span>Profile</span>
+
+                </a>
+
+            </li>
+
+
+
+            <!-- CAREER ROLE -->
+
+            <li>
+
+                <a href="{{ url_for('career') }}">
+
+                    <i class="fa-solid fa-briefcase"></i>
+
+                    <span>Career Role</span>
+
+                </a>
+
+            </li>
+
+            <!-- SKILL MATCH -->
+
+            <li>
+
+                <a href="{{ url_for('skill_match') }}">
+
+                    <i class="fa-solid fa-code-compare"></i>
+
+                    <span>Skill Match</span>
+
+                </a>
+
+            </li>
+
+            <!-- SKILL GAP -->
+
+            <li>
+
+                <a href="{{ url_for('skill_gap') }}">
+
+                    <i class="fa-solid fa-chart-column"></i>
+
+                    <span>Skill Gap</span>
+
+                </a>
+
+            </li>
+
+
+            <!-- ROADMAP -->
+
+            <li>
+
+                <a href="{{ url_for('roadmap') }}">
+
+                    <i class="fa-solid fa-route"></i>
+
+                    <span>Roadmap</span>
+
+                </a>
+
+            </li>
+
+
+
+            <!-- REPORT -->
+
+            <li class="active">
+
+                <a href="{{ url_for('report') }}">
+
+                    <i class="fa-solid fa-file-lines"></i>
+
+                    <span>Report</span>
+
+                </a>
+
+            </li>
+
+
+
+            <!-- LOGOUT -->
+
+            <li class="logout">
+
+                <a href="{{ url_for('logout') }}">
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                    <span>Logout</span>
+
+                </a>
+
+            </li>
+
+
+        </ul>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             PAGE HEADER
+        ================================================== -->
+
+        <div class="page-header">
+
+
+            <div class="header-left">
+
+                <h1>
+                    Career Analysis Report
+                </h1>
+
+                <p>
+                    Your personalized career and skill assessment summary.
+                </p>
+
+            </div>
+
+
+
+            <!-- USER NAME -->
+
+            <div class="header-actions">
+
+                <div class="user-info">
+
+
+                    <div class="user-icon">
+
+                        <i class="fas fa-user"></i>
+
+                    </div>
+
+
+                    <div class="user-name">
+
+                        {% if username %}
+
+                            {{ username }}
+
+                        {% endif %}
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             USER PROFILE SUMMARY
+        ================================================== -->
+
+        <section class="profile-summary">
+
+
+            <!-- SUMMARY HEADER -->
+
+            <div class="summary-heading">
+
+
+                <div class="summary-heading-icon">
+
+                    <i class="fas fa-user"></i>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        PROFILE SUMMARY
+                    </span>
+
+                    <h2>
+                        Your Career Profile
+                    </h2>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- SUMMARY GRID -->
+
+            <div class="summary-grid">
+
+
+                <!-- FULL NAME -->
+
+                <div class="summary-item">
+
+                    <span class="summary-label">
+                        FULL NAME
+                    </span>
+
+
+                    <div class="summary-value">
+
+                        <i class="fas fa-user"></i>
+
+
+                        {% if full_name %}
+
+                            {{ full_name }}
+
+                        {% else %}
+
+                            —
+
+                        {% endif %}
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- USER CATEGORY -->
+
+                <div class="summary-item">
+
+                    <span class="summary-label">
+                        USER CATEGORY
+                    </span>
+
+
+                    <div class="summary-value">
+
+                        <i class="fas fa-users"></i>
+
+
+                        {% if user_category %}
+
+                            {{ user_category }}
+
+                        {% else %}
+
+                            —
+
+                        {% endif %}
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- QUALIFICATION -->
+
+                <div class="summary-item">
+
+                    <span class="summary-label">
+                        QUALIFICATION
+                    </span>
+
+
+                    <div class="summary-value">
+
+                        <i class="fas fa-graduation-cap"></i>
+
+
+                        {% if qualification %}
+
+                            {{ qualification }}
+
+                        {% else %}
+
+                            —
+
+                        {% endif %}
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- RECOMMENDED CAREER -->
+
+                <div class="summary-item career-summary-item">
+
+                    <span class="summary-label">
+                        RECOMMENDED CAREER
+                    </span>
+
+
+                    <div class="summary-value career-value">
+
+                        <i class="fas fa-briefcase"></i>
+
+
+                        {% if career_role %}
+
+                            {{ career_role }}
+
+                        {% else %}
+
+                            —
+
+                        {% endif %}
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ANALYSIS PROFILE
+        ================================================== -->
+
+        <section class="analysis-profile">
+
+
+            <!-- CAREER -->
+
+            <div class="profile-left">
+
+
+                <div class="profile-icon">
+
+                    <i class="fas fa-briefcase"></i>
+
+                </div>
+
+
+                <div class="profile-details">
+
+                    <span class="small-label">
+                        ANALYSIS FOR
+                    </span>
+
+
+                    <h2>
+
+                        {% if career_role %}
+
+                            {{ career_role }}
+
+                        {% else %}
+
+                            —
+
+                        {% endif %}
+
+                    </h2>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ANALYSIS DATE -->
+
+            <div class="analysis-date-box">
+
+
+                <span class="small-label">
+                    ANALYSIS DATE
+                </span>
+
+
+                <strong>
+
+                    {% if analysis_date %}
+
+                        {{ analysis_date }}
+
+                    {% else %}
+
+                        —
+
+                    {% endif %}
+
+                </strong>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             RESULT SECTION
+        ================================================== -->
+
+        <section class="section">
+
+
+            <div class="section-heading">
+
+                <span>
+                    YOUR RESULT
+                </span>
+
+                <h2>
+                    Overall Career Readiness
+                </h2>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 SCORE GRID
+            ================================================== -->
+
+            <div class="score-grid">
+
+
+                <!-- =============================================
+                     OVERALL MATCH
+                ============================================== -->
+
+                <div class="score-card overall-card">
+
+
+                    <!-- SCORE CIRCLE -->
+
+                    {% if match_percentage is not none %}
+
+                    <div
+                        class="score-circle"
+                        style="--score: {{ match_percentage }};"
+                    >
+
+                        <div class="score-inner">
+
+                            <strong>
+                                {{ match_percentage }}%
+                            </strong>
+
+                            <span>
+                                Match
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    {% endif %}
+
+
+
+                    <!-- SCORE CONTENT -->
+
+                    <div class="score-content">
+
+
+                        {% if match_status %}
+
+                        <div class="score-status">
+
+                            <i class="fas fa-check-circle"></i>
+
+                            {{ match_status }}
+
+                        </div>
+
+                        {% endif %}
+
+
+
+                        {% if alignment_message %}
+
+                        <h3>
+
+                            {{ alignment_message }}
+
+                        </h3>
+
+                        {% endif %}
+
+
+
+                        {% if alignment_description %}
+
+                        <p>
+
+                            {{ alignment_description }}
+
+                        </p>
+
+                        {% endif %}
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     MATCHED SKILLS
+                ============================================== -->
+
+                <div class="stat-card">
+
+
+                    <div class="stat-icon">
+
+                        <i class="fas fa-check"></i>
+
+                    </div>
+
+
+                    <span class="stat-label">
+                        Matched Skills
+                    </span>
+
+
+                    <h3 class="stat-value">
+
+                        {{ matched_skills|length }}
+
+                    </h3>
+
+
+                    {% if matched_skills_description %}
+
+                    <p class="stat-description">
+
+                        {{ matched_skills_description }}
+
+                    </p>
+
+                    {% endif %}
+
+
+                </div>
+
+
+
+                <!-- =============================================
+                     SKILLS TO IMPROVE
+                ============================================== -->
+
+                <div class="stat-card">
+
+
+                    <div class="stat-icon">
+
+                        <i class="fas fa-triangle-exclamation"></i>
+
+                    </div>
+
+
+                    <span class="stat-label">
+                        Skills to Improve
+                    </span>
+
+
+                    <h3 class="stat-value">
+
+                        {{ skills_to_improve }}
+
+                    </h3>
+
+
+                    {% if skills_to_improve_description %}
+
+                    <p class="stat-description">
+
+                        {{ skills_to_improve_description }}
+
+                    </p>
+
+                    {% endif %}
+
+
+                </div>
+
+
+
+                <!-- =============================================
+                     CAREER READINESS
+                ============================================== -->
+
+                <div class="stat-card">
+
+
+                    <div class="stat-icon">
+
+                        <i class="fas fa-rocket"></i>
+
+                    </div>
+
+
+                    <span class="stat-label">
+                        Career Readiness
+                    </span>
+
+
+                    <h3 class="stat-value">
+
+                        {% if readiness %}
+
+                            {{ readiness }}
+
+                        {% else %}
+
+                            —
+
+                        {% endif %}
+
+                    </h3>
+
+
+                    {% if readiness_description %}
+
+                    <p class="stat-description">
+
+                        {{ readiness_description }}
+
+                    </p>
+
+                    {% endif %}
+
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             YOUR STRENGTHS + DEVELOPMENT AREAS
+        ================================================== -->
+
+        {% if strengths or improvement_skills %}
+
+        <section class="section">
+
+
+            <div class="two-column">
+
+
+                <!-- =============================================
+                     YOUR STRENGTHS
+                ============================================== -->
+
+                {% if strengths %}
+
+                <div class="panel">
+
+
+                    <div class="panel-header">
+
+
+                        <div class="panel-icon">
+
+                            <i class="fas fa-star"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <span class="panel-label">
+                                YOUR STRENGTHS
+                            </span>
+
+                            <h3>
+                                Strong Skills
+                            </h3>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="skill-list">
+
+
+                        {% for skill in strengths %}
+
+                        <div class="skill-row">
+
+
+                            <div class="skill-check">
+
+                                <i class="fas fa-check"></i>
+
+                            </div>
+
+
+                            <span class="skill-name">
+
+                                {{ skill }}
+
+                            </span>
+
+
+                        </div>
+
+                        {% endfor %}
+
+
+                    </div>
+
+
+                </div>
+
+                {% endif %}
+
+
+
+                <!-- =============================================
+                     DEVELOPMENT AREAS
+                ============================================== -->
+
+                {% if improvement_skills %}
+
+                <div class="panel">
+
+
+                    <div class="panel-header">
+
+
+                        <div class="panel-icon">
+
+                            <i class="fas fa-arrow-trend-up"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <span class="panel-label">
+                                DEVELOPMENT AREAS
+                            </span>
+
+                            <h3>
+                                Skills to Improve
+                            </h3>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="skill-list">
+
+
+                        {% for skill in improvement_skills %}
+
+                        <div class="skill-row">
+
+
+                            <div class="skill-warning">
+
+                                <i class="fas fa-arrow-up"></i>
+
+                            </div>
+
+
+                            <span class="skill-name">
+
+                                {{ skill }}
+
+                            </span>
+
+
+                        </div>
+
+                        {% endfor %}
+
+
+                    </div>
+
+
+                </div>
+
+                {% endif %}
+
+
+            </div>
+
+        </section>
+
+        {% endif %}
+
+
+                <!-- =================================================
+             LEARNING PROGRESS
+        ================================================== -->
+
+        <section class="section">
+
+            <div class="section-heading">
+
+                <span>
+                    LEARNING PROGRESS
+                </span>
+
+                <h2>
+                    Your Learning Roadmap Progress
+                </h2>
+
+            </div>
+
+
+            <div class="learning-progress-report">
+
+
+                <!-- OVERALL PROGRESS -->
+
+                <div class="learning-progress-main">
+
+                    <div class="learning-progress-top">
+
+                        <div>
+
+                            <span>
+                                Overall Learning Progress
+                            </span>
+
+                            <h3>
+                                {{ overall_progress|default(0) }}%
+                            </h3>
+
+                        </div>
+
+
+                        <div class="learning-progress-status">
+
+                            {% if overall_progress|default(0)|int >= 75 %}
+
+                                Nearly Complete
+
+                            {% elif overall_progress|default(0)|int >= 50 %}
+
+                                Good Progress
+
+                            {% elif overall_progress|default(0)|int > 0 %}
+
+                                In Progress
+
+                            {% else %}
+
+                                Not Started
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="learning-progress-bar">
+
+                        <div
+                            class="learning-progress-fill"
+                            style="width: {{ overall_progress|default(0) }}%;">
+                        </div>
+
+                    </div>
+
+
+                    <div class="learning-progress-info">
+
+                        <span>
+                            <i class="fas fa-circle-check"></i>
+
+                            {{ completed_topics|default(0) }}
+                            Topics Completed
+                        </span>
+
+
+                        <span>
+                            <i class="fas fa-book-open"></i>
+
+                            {{ total_topics|default(0) }}
+                            Total Topics
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- COMPLETED TOPICS -->
+
+                <div class="learning-stat-card">
+
+                    <div class="learning-stat-icon">
+
+                        <i class="fas fa-circle-check"></i>
+
+                    </div>
+
+
+                    <div class="learning-stat-content">
+
+                        <span>
+                            COMPLETED
+                        </span>
+
+                        <strong>
+                            {{ completed_topics|default(0) }}
+                        </strong>
+
+                        <small>
+                            Topics completed
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TOTAL TOPICS -->
+
+                <div class="learning-stat-card">
+
+                    <div class="learning-stat-icon">
+
+                        <i class="fas fa-book-open"></i>
+
+                    </div>
+
+
+                    <div class="learning-stat-content">
+
+                        <span>
+                            ROADMAP TOPICS
+                        </span>
+
+                        <strong>
+                            {{ total_topics|default(0) }}
+                        </strong>
+
+                        <small>
+                            Total topics
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+        
+
+        <!-- =================================================
+             CAREER INSIGHT
+        ================================================== -->
+
+        {% if report_insight %}
+
+        <section class="section">
+
+
+            <div class="insight-card">
+
+
+                <div class="insight-icon">
+
+                    <i class="fas fa-lightbulb"></i>
+
+                </div>
+
+
+                <div class="insight-content">
+
+
+                    <span>
+                        CAREER INSIGHT
+                    </span>
+
+
+                    <h3>
+                        Personalized Recommendation
+                    </h3>
+
+
+                    <p>
+
+                        {{ report_insight }}
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+        {% endif %}
+
+
+
+        <!-- =================================================
+             NEXT STEP
+        ================================================== -->
+
+        <section class="section">
+
+
+            <div class="next-step-card">
+
+
+                <div class="next-step-icon">
+
+                    <i class="fas fa-route"></i>
+
+                </div>
+
+
+                <div class="next-step-content">
+
+
+                    <span>
+                        RECOMMENDED NEXT STEP
+                    </span>
+
+
+                    <h3>
+                        Continue Your Learning Roadmap
+                    </h3>
+
+
+                    <p>
+
+                        Focus on your missing skills and follow
+                        the personalized roadmap to improve your
+                        career readiness.
+
+                    </p>
+
+
+                </div>
+
+
+                <a
+                    href="{{ url_for('roadmap') }}"
+                    class="roadmap-button"
+                >
+
+                    <i class="fas fa-arrow-right"></i>
+
+                    View Roadmap
+
+                </a>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             PRINT BUTTON
+        ================================================== -->
+
+        <div class="report-actions">
+
+
+            <button
+                type="button"
+                class="print-button"
+                onclick="window.print()"
+            >
+
+                <i class="fas fa-print"></i>
+
+                Print Report
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="page-footer">
+
+            Career Analysis Report
+
+        </footer>
+
+
+    </main>
+
+
+</div>
+
+
+</body>
+
+</html>

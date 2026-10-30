@@ -1,0 +1,1712 @@
+/* =========================================================
+   SKILL MATCH CSS
+   Skill Navigator - AI Career Guidance
+========================================================= */
+/* ==========================================
+   GOOGLE FONT
+========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+
+/* ==========================================
+   RESET
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* ==========================================
+   BODY
+========================================== */
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    color: #ffffff;
+
+    overflow-x: hidden;
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.45)
+        ),
+        url("../images/common-pg.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* ==========================================
+   DASHBOARD LAYOUT
+========================================== */
+
+.dashboard {
+    display: flex;
+
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+/* ==========================================
+   SIDEBAR
+========================================== */
+
+.sidebar {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 270px;
+    height: 100vh;
+
+    padding: 30px 20px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    z-index: 1000;
+
+    background: rgba(
+        0,
+        0,
+        0,
+        0.22
+    );
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    border-right:
+        1px solid
+        rgba(255, 255, 255, 0.15);
+}
+
+
+/* ==========================================
+   SIDEBAR SCROLLBAR
+========================================== */
+
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+
+    background:
+        rgba(
+            45,
+            183,
+            255,
+            0.45
+        );
+
+    border-radius: 20px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+
+    background:
+        rgba(
+            45,
+            183,
+            255,
+            0.75
+        );
+}
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 45px;
+}
+
+
+/* =========================================================
+   BRAND ICON
+========================================================= */
+
+.brand-icon {
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 14px;
+
+    background:
+        rgba(45, 183, 255, 0.15);
+
+    border:
+        1px solid
+        rgba(45, 183, 255, 0.25);
+
+    box-shadow:
+        0 0 20px
+        rgba(45, 183, 255, 0.12);
+}
+
+.brand-icon i {
+
+    font-size: 28px;
+
+    color: #2db7ff;
+
+    text-shadow:
+        0 0 15px
+        rgba(45, 183, 255, 0.5);
+}
+
+
+/* =========================================================
+   BRAND TEXT
+========================================================= */
+
+.brand-text {
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+}
+
+.brand-text h2 {
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    color: #ffffff;
+
+    white-space: nowrap;
+}
+
+.brand-text span {
+
+    color:
+        rgba(255, 255, 255, 0.70);
+
+    font-size: 11px;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MENU
+========================================== */
+
+.menu {
+
+    list-style: none;
+}
+
+.menu li {
+
+    margin-bottom: 15px;
+}
+
+.menu li a {
+
+    text-decoration: none;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.88
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 15px 18px;
+
+    border-radius: 12px;
+
+    transition:
+        all 0.35s ease;
+
+    font-size: 14px;
+
+    font-weight: 500;
+}
+
+.menu li a i {
+
+    width: 22px;
+
+    text-align: center;
+
+    font-size: 16px;
+}
+
+
+/* ==========================================
+   MENU HOVER
+========================================== */
+
+.menu li:hover a {
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.10
+        );
+
+    color: #ffffff;
+
+    transform:
+        translateX(6px);
+}
+
+
+/* ==========================================
+   ACTIVE MENU
+========================================== */
+
+.menu .active a {
+
+    background:
+        rgba(
+            45,
+            183,
+            255,
+            0.25
+        );
+
+    border:
+        1px solid
+        rgba(
+            45,
+            183,
+            255,
+            0.35
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 5px 20px
+        rgba(
+            45,
+            183,
+            255,
+            0.15
+        );
+}
+
+
+/* ==========================================
+   LOGOUT
+========================================== */
+
+.logout {
+
+    margin-top: 35px;
+}
+
+.logout a {
+
+    background:
+        rgba(
+            220,
+            53,
+            69,
+            0.35
+        ) !important;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            100,
+            110,
+            0.25
+        );
+
+    color: #ffffff !important;
+}
+
+.logout a:hover {
+
+    background:
+        rgba(
+            220,
+            53,
+            69,
+            0.55
+        ) !important;
+}
+
+
+/* ==========================================
+   MAIN CONTENT
+========================================== */
+
+.main-content {
+
+    margin-left: 270px;
+
+    width:
+        calc(
+            100% - 270px
+        );
+
+    min-height: 100vh;
+
+    padding: 35px;
+
+    background: transparent;
+
+    overflow: visible;
+}
+
+
+/* =========================================================
+   TOP HEADER
+========================================================= */
+
+.top-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin-bottom: 28px;
+}
+
+.small-title {
+    color: #5eead4;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: 1.8px;
+
+    margin-bottom: 5px;
+}
+
+.top-header h1 {
+    color: #ffffff;
+
+    font-size: 29px;
+    font-weight: 700;
+
+    line-height: 1.25;
+}
+
+.top-header p {
+    color: #a9bac7;
+
+    font-size: 13px;
+
+    margin-top: 7px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   USER AREA
+========================================================= */
+
+.user-area {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    flex-shrink: 0;
+}
+
+.user-info {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+}
+
+.user-info strong {
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.user-info span {
+    color: #8da1af;
+
+    font-size: 12px;
+
+    margin-top: 2px;
+}
+
+.user-icon {
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(45, 183, 255, 0.12);
+
+    border: 1px solid rgba(45, 183, 255, 0.20);
+
+    color: #5eead4;
+
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   CAREER HEADER
+========================================================= */
+
+.career-header {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+
+    padding: 25px 28px;
+
+    margin-bottom: 22px;
+
+    border-radius: 19px;
+
+    overflow: hidden;
+
+    background:
+        rgba(255, 255, 255, 0.065);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.12);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 15px 40px
+        rgba(0, 0, 0, 0.20);
+
+    animation:
+        fadeUp 0.5s ease;
+}
+
+.career-header::before {
+    content: "";
+
+    position: absolute;
+
+    width: 240px;
+    height: 240px;
+
+    right: -110px;
+    top: -130px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(45, 183, 255, 0.12);
+
+    filter: blur(35px);
+
+    pointer-events: none;
+}
+
+.career-header-left {
+    position: relative;
+
+    z-index: 1;
+
+    min-width: 0;
+}
+
+.career-header .small-title {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: 1.4px;
+
+    color: #5eead4;
+}
+
+.career-header h2 {
+    font-size: 26px;
+
+    line-height: 1.3;
+
+    font-weight: 600;
+
+    color: #ffffff;
+}
+
+.career-header p {
+    margin-top: 7px;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    color:
+        rgba(255, 255, 255, 0.52);
+}
+
+.career-icon {
+    position: relative;
+
+    z-index: 1;
+
+    width: 62px;
+    height: 62px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 16px;
+
+    background:
+        rgba(45, 183, 255, 0.10);
+
+    border:
+        1px solid
+        rgba(45, 183, 255, 0.22);
+
+    color: #5eead4;
+
+    font-size: 24px;
+}
+
+
+/* =========================================================
+   MAIN GRID
+========================================================= */
+
+.skill-match-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+
+/* =========================================================
+   GLASS CARD
+========================================================= */
+
+.glass-card {
+    min-width: 0;
+
+    padding: 24px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255, 255, 255, 0.058);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.105);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 15px 38px
+        rgba(0, 0, 0, 0.19);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+
+    animation:
+        fadeUp 0.55s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-3px);
+
+    border-color:
+        rgba(45, 183, 255, 0.22);
+
+    box-shadow:
+        0 20px 42px
+        rgba(0, 0, 0, 0.23);
+}
+
+
+/* =========================================================
+   CARD HEADING
+========================================================= */
+
+.card-heading {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    margin-bottom: 20px;
+}
+
+.card-heading-icon {
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 12px;
+
+    background:
+        rgba(45, 183, 255, 0.10);
+
+    border:
+        1px solid
+        rgba(45, 183, 255, 0.18);
+
+    color: #5eead4;
+
+    font-size: 16px;
+}
+
+.card-heading h3 {
+    font-size: 18px;
+
+    font-weight: 600;
+
+    color: #ffffff;
+}
+
+.card-heading p {
+    margin-top: 3px;
+
+    font-size: 11px;
+
+    color:
+        rgba(255, 255, 255, 0.45);
+}
+
+
+/* =========================================================
+   SKILL LIST
+========================================================= */
+
+.skill-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+
+    max-height: 350px;
+
+    overflow-y: auto;
+
+    padding-right: 4px;
+}
+
+.skill-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.skill-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.skill-list::-webkit-scrollbar-thumb {
+    background:
+        rgba(94, 234, 212, 0.25);
+
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   SKILL ITEM
+========================================================= */
+
+.skill-item {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 18px;
+
+    min-height: 48px;
+
+    padding: 11px 14px;
+
+    border-radius: 11px;
+
+    background:
+        rgba(255, 255, 255, 0.035);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.06);
+
+    transition:
+        all 0.22s ease;
+}
+
+.skill-item:hover {
+    background:
+        rgba(45, 183, 255, 0.065);
+
+    border-color:
+        rgba(45, 183, 255, 0.15);
+
+    transform:
+        translateX(2px);
+}
+
+
+/* Skill Name */
+
+.skill-name {
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    min-width: 0;
+
+    font-size: 14px;
+
+    font-weight: 400;
+
+    color:
+        rgba(255, 255, 255, 0.82);
+}
+
+.skill-name i {
+    width: 18px;
+
+    flex-shrink: 0;
+
+    text-align: center;
+
+    color: #5eead4;
+
+    font-size: 13px;
+}
+
+.skill-name span {
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   SKILL STATUS
+========================================================= */
+
+.skill-status {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    flex-shrink: 0;
+
+    font-size: 11px;
+
+    font-weight: 500;
+}
+
+.skill-status i {
+    font-size: 11px;
+}
+
+.skill-status.match {
+    color: #6ee7bd;
+}
+
+.skill-status.missing {
+    color: #ff8585;
+}
+
+.skill-status.basic {
+    color: #ffd27a;
+}
+
+
+/* =========================================================
+   EMPTY SKILL
+========================================================= */
+
+.empty-skill {
+    min-height: 130px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    text-align: center;
+
+    border-radius: 12px;
+
+    background:
+        rgba(255, 255, 255, 0.025);
+
+    border:
+        1px dashed
+        rgba(255, 255, 255, 0.12);
+}
+
+.empty-skill i {
+    font-size: 22px;
+
+    color:
+        rgba(255, 255, 255, 0.34);
+}
+
+.empty-skill p {
+    font-size: 12px;
+
+    color:
+        rgba(255, 255, 255, 0.42);
+}
+
+
+/* =========================================================
+   MATCH SCORE CARD
+========================================================= */
+
+.match-score-card {
+    grid-column: 1 / -1;
+
+    display: grid;
+
+    grid-template-columns:
+        190px minmax(0, 1fr);
+
+    align-items: center;
+
+    gap: 35px;
+
+    min-height: 250px;
+}
+
+
+/* =========================================================
+   SCORE CIRCLE
+========================================================= */
+
+.score-circle {
+    width: 165px;
+    height: 165px;
+
+    margin: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(45, 183, 255, 0.15),
+            rgba(45, 183, 255, 0.04) 58%,
+            transparent 73%
+        );
+
+    border:
+        2px solid
+        rgba(45, 183, 255, 0.34);
+
+    box-shadow:
+        0 0 32px
+        rgba(45, 183, 255, 0.10),
+
+        inset 0 0 25px
+        rgba(45, 183, 255, 0.04);
+}
+
+.score {
+    font-size: 42px;
+
+    line-height: 1;
+
+    font-weight: 700;
+
+    background:
+        linear-gradient(
+            90deg,
+            #62d1ff,
+            #ffffff
+        );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.score-circle span {
+    margin-top: 8px;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    color:
+        rgba(255, 255, 255, 0.45);
+}
+
+
+/* =========================================================
+   SCORE CONTENT
+========================================================= */
+
+.section-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: 1.5px;
+
+    color: #5eead4;
+}
+
+.score-content h3 {
+    font-size: 22px;
+
+    line-height: 1.35;
+
+    font-weight: 600;
+
+    color: #ffffff;
+}
+
+.score-content > p {
+    max-width: 720px;
+
+    margin-top: 8px;
+
+    font-size: 13px;
+
+    line-height: 1.75;
+
+    color:
+        rgba(255, 255, 255, 0.52);
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+.progress-container {
+    margin-top: 20px;
+}
+
+.progress-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+
+    font-size: 11px;
+
+    color:
+        rgba(255, 255, 255, 0.52);
+}
+
+.progress-bar {
+    width: 100%;
+
+    height: 9px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+
+    max-width: 100%;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #1ca8ff,
+            #2dd4bf
+        );
+
+    box-shadow:
+        0 0 13px
+        rgba(45, 183, 255, 0.35);
+
+    transition:
+        width 0.8s ease;
+}
+
+
+/* =========================================================
+   MATCH STATS
+========================================================= */
+
+.match-stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 12px;
+
+    margin-top: 18px;
+}
+
+.stat-box {
+    padding: 13px 10px;
+
+    text-align: center;
+
+    border-radius: 11px;
+
+    background:
+        rgba(255, 255, 255, 0.035);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.065);
+}
+
+.stat-icon {
+    margin-bottom: 4px;
+
+    font-size: 11px;
+}
+
+.stat-box h4 {
+    font-size: 21px;
+
+    font-weight: 600;
+}
+
+.stat-box p {
+    margin-top: 3px;
+
+    font-size: 10px;
+
+    color:
+        rgba(255, 255, 255, 0.44);
+}
+
+.stat-box.matched .stat-icon,
+.stat-box.matched h4 {
+    color: #6ee7bd;
+}
+
+.stat-box.missing .stat-icon,
+.stat-box.missing h4 {
+    color: #ff8585;
+}
+
+.stat-box.total .stat-icon,
+.stat-box.total h4 {
+    color: #67d3ff;
+}
+
+
+/* =========================================================
+   COMPARISON CARD
+========================================================= */
+
+.comparison-card {
+    grid-column: 1 / -1;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+.table-wrapper::-webkit-scrollbar {
+    height: 5px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background:
+        rgba(94, 234, 212, 0.22);
+
+    border-radius: 10px;
+}
+
+.comparison-table {
+    width: 100%;
+
+    min-width: 650px;
+
+    border-collapse: collapse;
+}
+
+.comparison-table th {
+    padding: 13px 11px;
+
+    text-align: left;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    color:
+        rgba(255, 255, 255, 0.43);
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.09);
+}
+
+.comparison-table td {
+    padding: 14px 11px;
+
+    font-size: 13px;
+
+    color:
+        rgba(255, 255, 255, 0.67);
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.055);
+}
+
+.comparison-table tbody tr {
+    transition:
+        background 0.2s ease;
+}
+
+.comparison-table tbody tr:hover {
+    background:
+        rgba(45, 183, 255, 0.035);
+}
+
+.comparison-table tr:last-child td {
+    border-bottom: none;
+}
+
+.comparison-table td strong {
+    color:
+        rgba(255, 255, 255, 0.88);
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   LEVEL
+========================================================= */
+
+.level {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    font-size: 13px;
+}
+
+.strong-level {
+    color: #6ee7bd;
+}
+
+.weak-level {
+    color:
+        rgba(255, 255, 255, 0.38);
+}
+
+.required-text {
+    font-size: 11px;
+
+    color:
+        rgba(255, 255, 255, 0.48);
+}
+
+
+/* =========================================================
+   BADGES
+========================================================= */
+
+.badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+
+    font-weight: 500;
+}
+
+.badge.match {
+    color: #6ee7bd;
+
+    background:
+        rgba(46, 204, 145, 0.09);
+
+    border:
+        1px solid
+        rgba(46, 204, 145, 0.15);
+}
+
+.badge.missing {
+    color: #ff8585;
+
+    background:
+        rgba(255, 80, 80, 0.08);
+
+    border:
+        1px solid
+        rgba(255, 80, 80, 0.15);
+}
+
+
+/* =========================================================
+   EMPTY TABLE
+========================================================= */
+
+.empty-table {
+    padding: 35px !important;
+
+    text-align: center !important;
+
+    font-size: 12px !important;
+
+    color:
+        rgba(255, 255, 255, 0.40) !important;
+}
+
+
+/* =========================================================
+   BUTTON AREA
+========================================================= */
+
+.button-area {
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+    gap: 11px;
+
+    margin-top: 22px;
+}
+
+
+/* =========================================================
+   NO CAREER CARD
+========================================================= */
+
+.no-career-card {
+    min-height: 420px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 45px;
+
+    text-align: center;
+
+    border-radius: 20px;
+
+    background:
+        rgba(255, 255, 255, 0.055);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.10);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 15px 40px
+        rgba(0, 0, 0, 0.20);
+}
+
+.no-career-icon {
+    width: 75px;
+    height: 75px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 20px;
+
+    border-radius: 19px;
+
+    background:
+        rgba(45, 183, 255, 0.09);
+
+    border:
+        1px solid
+        rgba(45, 183, 255, 0.18);
+
+    color: #5eead4;
+
+    font-size: 27px;
+}
+
+.no-career-card h2 {
+    font-size: 24px;
+
+    font-weight: 600;
+}
+
+.no-career-card p {
+    max-width: 600px;
+
+    margin: 11px auto 23px;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    color:
+        rgba(255, 255, 255, 0.50);
+}
+
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+/* ==========================================
+   ACTION BUTTONS
+========================================== */
+
+.button-area{
+    display:flex;
+    justify-content:flex-end;
+    gap:18px;
+    margin-top:25px;
+    flex-wrap:wrap;
+}
+
+.action-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+
+    min-width:220px;
+    padding:15px 24px;
+
+    text-decoration:none;
+    color:#fff;
+    font-size:12px;
+    font-weight:600;
+
+    border-radius:14px;
+    border:1px solid rgba(94,234,212,.25);
+
+    background:linear-gradient(90deg,#20c997,#148f77);
+
+    box-shadow:0 10px 25px rgba(32,201,151,.25);
+    transition:all .3s ease;
+}
+
+.action-btn:hover{
+    transform:translateY(-3px);
+    background:linear-gradient(90deg,#28d8a3,#18a085);
+    box-shadow:0 14px 30px rgba(32,201,151,.35);
+}
+
+.action-btn i{
+    font-size:15px;
+}
+
+@media(max-width:700px){
+
+    .button-area{
+        justify-content:center;
+    }
+
+    .action-btn{
+        width:100%;
+    }
+}
+
+@media(max-width:700px){
+    .action-boxes{
+        justify-content:center;
+    }
+
+    .action-card{
+        width:100%;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .skill-match-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .match-score-card,
+    .comparison-card {
+        grid-column: auto;
+    }
+
+    .match-score-card {
+        grid-template-columns:
+            170px minmax(0, 1fr);
+
+        gap: 25px;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .career-header {
+        padding: 21px;
+    }
+
+    .career-header h2 {
+        font-size: 22px;
+    }
+
+    .career-header p {
+        font-size: 12px;
+    }
+
+    .career-icon {
+        width: 52px;
+        height: 52px;
+
+        font-size: 20px;
+    }
+
+    .glass-card {
+        padding: 20px;
+    }
+
+    .match-score-card {
+        grid-template-columns: 1fr;
+
+        text-align: center;
+
+        gap: 25px;
+    }
+
+    .score-circle {
+        width: 155px;
+        height: 155px;
+    }
+
+    .score-content > p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .progress-top {
+        text-align: left;
+    }
+
+    .button-area {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .button-area .btn {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .career-header {
+        padding: 18px;
+    }
+
+    .career-header h2 {
+        font-size: 20px;
+    }
+
+    .career-icon {
+        width: 46px;
+        height: 46px;
+
+        font-size: 18px;
+    }
+
+    .glass-card {
+        padding: 17px;
+    }
+
+    .card-heading h3 {
+        font-size: 16px;
+    }
+
+    .skill-name {
+        font-size: 13px;
+    }
+
+    .skill-status {
+        font-size: 10px;
+    }
+
+    .match-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .score {
+        font-size: 37px;
+    }
+
+    .comparison-table {
+        min-width: 600px;
+    }
+}

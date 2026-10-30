@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Learning Roadmap | Skill Navigator</title>
+
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <!-- Roadmap CSS -->
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/roadmap.css') }}">
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <!-- BRAND -->
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                <i class="fa-solid fa-brain"></i><br>
+            </div>
+
+
+            <div class="brand-text">
+
+                <h2>Skill Navigator</h2>
+
+                <span>AI Career Guidance</span>
+
+            </div>
+
+        </div>
+
+
+        <ul class="menu">
+
+            <!-- Home -->
+             <li>
+                
+                <a href="{{ url_for('home') }}">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+
+            <!-- Dashboard -->
+
+            <li>
+
+                <a href="{{ url_for('dashboard') }}">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    <span>Dashboard</span>
+
+                </a>
+
+            </li>
+
+
+            <!-- Profile -->
+
+            <li>
+
+                <a href="{{ url_for('profile') }}">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    <span>Profile</span>
+
+                </a>
+
+            </li>
+
+
+            <!-- Career Role -->
+
+            <li>
+
+                <a href="{{ url_for('career') }}">
+
+                    <i class="fa-solid fa-briefcase"></i>
+
+                    <span>Career Role</span>
+
+                </a>
+
+            </li>
+
+            <!-- Skill Match -->
+
+            <li>
+
+                <a href="{{ url_for('skill_match') }}">
+
+                    <i class="fa-solid fa-code-compare"></i>
+
+                    <span>Skill Match</span>
+
+                </a>
+
+            </li>
+
+            <!-- Skill Gap -->
+
+            <li>
+
+                <a href="{{ url_for('skill_gap') }}">
+
+                    <i class="fa-solid fa-chart-column"></i>
+
+                    <span>Skill Gap</span>
+
+                </a>
+
+            </li>            
+
+            <!-- Roadmap -->
+
+            <li class="active">
+
+                <a href="{{ url_for('roadmap') }}">
+
+                    <i class="fa-solid fa-route"></i>
+
+                    <span>Roadmap</span>
+
+                </a>
+
+            </li>
+
+
+            <!-- Report -->
+
+            <li>
+
+                <a href="{{ url_for('report') }}">
+
+                    <i class="fa-solid fa-file-lines"></i>
+
+                    <span>Report</span>
+
+                </a>
+
+            </li>
+
+
+            <!-- Logout -->
+
+            <li class="logout">
+
+                <a href="{{ url_for('logout') }}">
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                    <span>Logout</span>
+
+                </a>
+
+            </li>
+
+        </ul>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <div class="topbar">
+
+            <div>
+
+                <div class="page-label">
+
+                    LEARNING & DEVELOPMENT
+
+                </div>
+
+                <h1>
+
+                    Learning Roadmap
+
+                </h1>
+
+            </div>
+
+
+            <div class="user-area">
+
+                <div class="user-info">
+
+                    <strong>
+                        {{ session.get('username', 'User') }}
+                    </strong>
+
+                    <span>
+                        Career Explorer
+                    </span>
+
+                </div>
+
+
+                <div class="user-icon">
+
+                    <i class="fas fa-user"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             INTRO
+        ================================================== -->
+
+        <section class="roadmap-intro">
+
+
+            <div class="small-title">
+
+                PERSONALIZED LEARNING PATH
+
+            </div>
+
+
+            {% if career_role %}
+
+                <h2>
+
+                    Your Roadmap to {{ career_role }}
+
+                </h2>
+
+                <p>
+
+                    This roadmap is generated based on your
+                    selected career role and the skills required
+                    for that role.
+
+                </p>
+
+            {% else %}
+
+                <h2>
+
+                    Learning Roadmap
+
+                </h2>
+
+                <p>
+
+                    Select a career role first to generate your
+                    personalized learning roadmap.
+
+                </p>
+
+            {% endif %}
+
+
+        </section>
+
+
+
+        {% if career_role %}
+
+
+        <!-- =================================================
+             SUMMARY CARDS
+        ================================================== -->
+
+        <section class="roadmap-summary">
+
+
+            <!-- REQUIRED SKILLS -->
+
+            <div class="roadmap-stat">
+
+                <i class="fa-solid fa-layer-group"></i>
+
+                <h3>
+
+                    {{ total_skills }}
+
+                </h3>
+
+                <p>
+
+                    Required Skills
+
+                </p>
+
+            </div>
+
+
+            <!-- SKILLS USER HAS -->
+
+            <div class="roadmap-stat">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                <h3>
+
+                    {{ matched_count }}
+
+                </h3>
+
+                <p>
+
+                    Skills You Have
+
+                </p>
+
+            </div>
+
+
+            <!-- SKILLS TO LEARN -->
+
+            <div class="roadmap-stat">
+
+                <i class="fa-solid fa-book-open"></i>
+
+                <h3>
+
+                    {{ missing_count }}
+
+                </h3>
+
+                <p>
+
+                    Skills to Learn
+
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             CAREER READINESS
+        ================================================== -->
+
+        <section class="progress-box">
+
+
+            <div class="progress-header">
+
+                <span>
+
+                    Career Readiness
+
+                </span>
+
+                <strong id="careerReadinessText">
+
+                    {{ match_percentage }}%
+
+                </strong>
+
+            </div>
+
+
+            <div class="progress-bar">
+
+                <div class="progress-fill"
+                     id="careerReadinessFill"
+                     style="width: {{ match_percentage }}%;">
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             OVERALL LEARNING PROGRESS
+        ================================================== -->
+
+        <section class="learning-progress-box">
+
+
+            <div class="learning-progress-header">
+
+
+                <div>
+
+                    <span class="progress-label">
+
+                        Overall Learning Progress
+
+                    </span>
+
+
+                    <p>
+
+                        Complete learning topics to track
+                        your roadmap progress.
+
+                    </p>
+
+                </div>
+
+
+                <strong id="overallProgressText">
+
+                    {{ overall_progress }}%
+
+                </strong>
+
+
+            </div>
+
+
+            <div class="learning-progress-bar">
+
+
+                <div class="learning-progress-fill"
+                     id="overallProgressFill"
+                     style="width: {{ overall_progress }}%;">
+
+                </div>
+
+
+            </div>
+
+
+            <div class="overall-progress-info">
+
+
+                <span id="completedTopicCount">
+
+                    {{ completed_topics }} topics completed
+
+                </span>
+
+
+                <span id="totalTopicCount">
+
+                    {{ total_topics }} total topics
+
+                </span>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             CURRENT LEARNING
+        ================================================== -->
+
+        <section class="current-learning">
+
+
+            <div class="current-learning-icon">
+
+                <i class="fa-solid fa-graduation-cap"></i>
+
+            </div>
+
+
+            <div class="current-learning-content">
+
+
+                <span class="current-label">
+
+                    CURRENT LEARNING
+
+                </span>
+
+
+                <h3 id="currentLearningTitle">
+
+                    Choose a skill to start learning
+
+                </h3>
+
+
+                <p id="currentLearningDescription">
+
+                    Select a skill below and complete the
+                    topics step by step.
+
+                </p>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             LEARNING PATH
+        ================================================== -->
+
+        <section class="roadmap-section">
+
+
+            <div class="section-title">
+
+
+                <h2>
+
+                    <i class="fa-solid fa-route"></i>
+
+                    Your Learning Path
+
+                </h2>
+
+
+                <p>
+
+                    Learn the skills required for
+                    {{ career_role }} step by step.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="timeline">
+
+
+                {% for step in roadmap %}
+
+
+                <!-- =================================================
+                     ROADMAP SKILL CARD
+                ================================================== -->
+
+                <div class="roadmap-step"
+                     data-step="{{ step.step }}"
+                     data-skill="{{ step.skill }}">
+
+
+                    <!-- STEP NUMBER -->
+
+                    <div class="step-number">
+
+                        {{ loop.index }}
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         SKILL HEADER
+                    ================================================== -->
+
+                    <div class="step-header">
+
+
+                        <div class="skill-header-left">
+
+
+                            <div class="skill-title-row">
+
+
+                                <h3>
+
+                                    {{ step.skill }}
+
+                                </h3>
+
+
+                                <span
+                                    class="learning-status
+                                           {% if step.status == 'Completed' %}
+                                               status-completed
+                                           {% elif step.status == 'In Progress' %}
+                                               status-progress
+                                           {% else %}
+                                               status-not-started
+                                           {% endif %}"
+                                    data-status>
+
+
+                                    {% if step.status == 'Completed' %}
+
+                                        <i class="fa-solid fa-check"></i>
+
+                                        Completed
+
+                                    {% elif step.status == 'In Progress' %}
+
+                                        In Progress
+
+                                    {% else %}
+
+                                        Not Started
+
+                                    {% endif %}
+
+
+                                </span>
+
+
+                            </div>
+
+
+                            <p>
+
+                                Develop your {{ step.skill }}
+                                skills for {{ career_role }}.
+
+                            </p>
+
+
+                        </div>
+
+
+                        <span class="level">
+
+                            {{ step.level }}
+
+                        </span>
+
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         SKILL PROGRESS
+                    ================================================== -->
+
+                    <div class="skill-progress-section">
+
+
+                        <div class="skill-progress-header">
+
+
+                            <span>
+
+                                Skill Progress
+
+                            </span>
+
+
+                            <strong data-progress-text>
+
+                                {{ step.progress|default(0) }}%
+
+                            </strong>
+
+
+                        </div>
+
+
+                        <div class="skill-progress-bar">
+
+
+                            <div
+                                class="skill-progress-fill"
+                                data-progress-fill
+                                style="width: {{ step.progress|default(0) }}%;">
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         TOPIC HEADING
+                    ================================================== -->
+
+                    <div class="topics-heading">
+
+                        <i class="fa-solid fa-list-check"></i>
+
+                        Learning Topics
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         TOPICS
+                    ================================================== -->
+
+                    <div class="topic-list">
+
+
+                        {% for topic in step.topics %}
+
+
+                        <label class="topic-item">
+
+
+                            <input
+                                type="checkbox"
+                                class="topic-checkbox"
+                                data-topic="{{ topic }}"
+                                data-skill="{{ step.skill }}"
+                                {% if topic in step.completed_topics %}
+                                    checked
+                                {% endif %}>
+
+
+                            <span class="topic-check">
+
+                                <i class="fa-solid fa-check"></i>
+
+                            </span>
+
+
+                            <span class="topic-text">
+
+                                {{ topic }}
+
+                            </span>
+
+
+                        </label>
+
+
+                        {% endfor %}
+
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         STEP FOOTER
+                    ================================================== -->
+
+                    <div class="step-footer">
+
+
+                        <div class="step-meta">
+
+
+                            <span class="duration">
+
+                                <i class="fa-regular fa-clock"></i>
+
+                                {{ step.duration }}
+
+                            </span>
+
+
+                            <span class="topic-count"
+                                  data-topic-count>
+
+                                {{ step.completed_count }}
+                                /
+                                {{ step.topics|length }}
+                                topics
+
+                            </span>
+
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             START LEARNING BUTTON
+                        ================================================== -->
+
+                        <button
+                            type="button"
+                            class="learning-btn"
+                            data-learning-btn
+                            data-skill="{{ step.skill }}">
+
+
+                            {% if step.progress|default(0) == 100 %}
+
+                                <i class="fa-solid fa-circle-check"></i>
+
+                                Completed
+
+                            {% elif step.progress|default(0) > 0 %}
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                                Continue Learning
+
+                            {% else %}
+
+                                <i class="fa-solid fa-play"></i>
+
+                                Start Learning
+
+                            {% endif %}
+
+
+                        </button>
+
+
+                    </div>
+
+
+
+                    <!-- SAVE MESSAGE -->
+
+                    <div class="save-message"
+                         data-save-message>
+
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                        Progress saved
+
+                    </div>
+
+
+                </div>
+
+
+                {% endfor %}
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             DYNAMIC LEARNING RESOURCES
+        ================================================== -->
+
+        <section class="roadmap-section">
+
+
+            <div class="section-title">
+
+
+                <h2>
+
+                    <i class="fa-solid fa-book-open"></i>
+
+                    Recommended Resources
+
+                </h2>
+
+
+                <p>
+
+                    Learning resources based on your
+                    missing skills for {{ career_role }}.
+
+                </p>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 RESOURCES GENERATED FROM ROADMAP SKILLS
+            ================================================== -->
+
+            <div class="resources">
+
+
+                {% for step in roadmap %}
+
+
+                <div class="resource-card"
+                     data-resource-skill="{{ step.skill|lower }}">
+
+
+                    <h3>
+
+                        <i class="fa-solid fa-book-open"></i>
+
+                        {{ step.skill }}
+
+                    </h3>
+
+
+                    <p>
+
+                        Learn {{ step.skill }} and improve
+                        your skills for {{ career_role }}.
+
+                    </p>
+
+
+                    <a href="#"
+                       class="resource-link"
+                       data-resource-link
+                       data-skill="{{ step.skill }}">
+
+                        Start Learning
+
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                    </a>
+
+
+                </div>
+
+
+                {% endfor %}
+
+
+                {% if not roadmap %}
+
+
+                <div class="resource-card">
+
+                    <h3>
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        No Missing Skills
+
+                    </h3>
+
+                    <p>
+
+                        You currently have all the required
+                        skills for your selected career role.
+
+                    </p>
+
+                </div>
+
+
+                {% endif %}
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             ACTION BUTTONS
+        ================================================== -->
+
+        <div class="roadmap-action">
+
+
+            <a href="{{ url_for('skill_gap') }}"
+               class="btn btn-secondary">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                View Skill Gap
+
+            </a>
+
+
+
+            <a href="{{ url_for('skill_match') }}"
+               class="btn btn-primary">
+
+                <i class="fa-solid fa-code-compare"></i>
+
+                View Skill Match
+
+            </a>
+
+
+        </div>
+
+
+
+        {% else %}
+
+
+
+        <!-- =================================================
+             EMPTY ROADMAP
+        ================================================== -->
+
+        <div class="empty-roadmap">
+
+
+            <div class="empty-icon">
+
+                <i class="fa-solid fa-route"></i>
+
+            </div>
+
+
+            <h2>
+
+                No Career Role Selected
+
+            </h2>
+
+
+            <p>
+
+                Please select a career role first.
+                Your personalized learning roadmap will
+                be generated automatically.
+
+            </p>
+
+
+            <a href="{{ url_for('career') }}"
+               class="btn btn-primary">
+
+                <i class="fa-solid fa-briefcase"></i>
+
+                Select Career Role
+
+            </a>
+
+
+        </div>
+
+
+        {% endif %}
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     ROADMAP JAVASCRIPT
+========================================================= -->
+
+<script src="{{ url_for('static', filename='js/roadmap.js') }}"></script>
+
+
+
+<!-- =========================================================
+     DYNAMIC LEARNING RESOURCE JAVASCRIPT
+========================================================= -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    /* =====================================================
+       LEARNING RESOURCE URLS
+    ===================================================== */
+
+    const learningResources = {
+
+        "html":
+            "https://www.w3schools.com/html/",
+
+        "css":
+            "https://www.w3schools.com/css/",
+
+        "javascript":
+            "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+
+        "python":
+            "https://www.python.org/about/gettingstarted/",
+
+        "sql":
+            "https://www.w3schools.com/sql/",
+
+        "mysql":
+            "https://www.w3schools.com/mysql/",
+
+        "java":
+            "https://dev.java/learn/",
+
+        "c++":
+            "https://www.w3schools.com/cpp/",
+
+        "flask":
+            "https://flask.palletsprojects.com/en/stable/tutorial/",
+
+        "git":
+            "https://git-scm.com/doc",
+
+        "github":
+            "https://docs.github.com/en/get-started",
+
+        "docker":
+            "https://docs.docker.com/get-started/",
+
+        "kubernetes":
+            "https://kubernetes.io/docs/tutorials/",
+
+        "aws":
+            "https://aws.amazon.com/getting-started/",
+
+        "linux":
+            "https://ubuntu.com/tutorials/command-line-for-beginners",
+
+        "pandas":
+            "https://pandas.pydata.org/docs/getting_started/intro_tutorials/",
+
+        "numpy":
+            "https://numpy.org/learn/",
+
+        "machine learning":
+            "https://www.coursera.org/learn/machine-learning",
+
+        "deep learning":
+            "https://www.deeplearning.ai/courses/",
+
+        "data visualization":
+            "https://matplotlib.org/stable/tutorials/",
+
+        "power bi":
+            "https://learn.microsoft.com/en-us/training/powerplatform/power-bi/",
+
+        "excel":
+            "https://support.microsoft.com/en-us/excel"
+
+    };
+
+
+
+    /* =====================================================
+       START LEARNING BUTTON
+    ===================================================== */
+
+    const learningButtons =
+        document.querySelectorAll("[data-learning-btn]");
+
+
+    learningButtons.forEach(function (button) {
+
+
+        button.addEventListener("click", function () {
+
+
+            const skill =
+                this.dataset.skill
+                    .trim()
+                    .toLowerCase();
+
+
+            /* =============================================
+               COMPLETED SKILL
+            ============================================= */
+
+            if (
+                this.textContent
+                    .trim()
+                    .toLowerCase()
+                    .includes("completed")
+            ) {
+
+                return;
+
+            }
+
+
+            /* =============================================
+               FIND WEBSITE FOR SKILL
+            ============================================= */
+
+            let url =
+                learningResources[skill];
+
+
+            /* =============================================
+               FALLBACK
+            ============================================= */
+
+            if (!url) {
+
+                url =
+                    "https://www.google.com/search?q=" +
+                    encodeURIComponent(
+                        skill + " tutorial"
+                    );
+
+            }
+
+
+            /* =============================================
+               OPEN EXTERNAL WEBSITE
+            ============================================= */
+
+            window.open(
+                url,
+                "_blank",
+                "noopener,noreferrer"
+            );
+
+
+        });
+
+    });
+
+
+
+    /* =====================================================
+       DYNAMIC RESOURCE LINKS
+    ===================================================== */
+
+    const resourceLinks =
+        document.querySelectorAll(
+            "[data-resource-link]"
+        );
+
+
+    resourceLinks.forEach(function (link) {
+
+
+        const skill =
+            link.dataset.skill
+                .trim()
+                .toLowerCase();
+
+
+        let url =
+            learningResources[skill];
+
+
+        /* =============================================
+           FALLBACK FOR UNKNOWN SKILLS
+        ============================================= */
+
+        if (!url) {
+
+            url =
+                "https://www.google.com/search?q=" +
+                encodeURIComponent(
+                    skill + " tutorial"
+                );
+
+        }
+
+
+        link.href = url;
+
+        link.target = "_blank";
+
+        link.rel =
+            "noopener noreferrer";
+
+
+    });
+
+
+});
+
+</script>
+
+
+</body>
+
+</html>

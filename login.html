@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Skill Navigator</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/login.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="overlay">
+
+    <div class="login-container">
+
+        <!-- LEFT PANEL -->
+
+        <div class="left-panel">
+
+            <h1>
+
+                <i class="fa-solid fa-user-shield"></i>
+
+                Welcome Back
+
+            </h1>
+
+            <p>
+
+                Login to Skill Navigator and continue your AI-powered
+                learning journey with personalized skill analysis
+                and career guidance.
+
+            </p>
+
+            <img src="{{ url_for('static', filename='images/login.png') }}"
+                 alt="Login">
+
+        </div>
+
+        <!-- RIGHT PANEL -->
+
+        <div class="right-panel">
+
+            <h2>Login</h2>
+
+            <!-- Flash Messages -->
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+
+                        <div class="alert {{ category }}">
+
+                            {{ message }}
+
+                        </div>
+
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <form method="POST" action="{{ url_for('login') }}">
+
+                <!-- Username -->
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="Username"
+                        required>
+
+                </div>
+
+                <!-- Password -->
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Password"
+                        required>
+
+                    <i class="fa-solid fa-eye"
+                       id="togglePassword"></i>
+
+                </div>
+
+                <!-- Remember -->
+
+                <div class="options">
+
+                    <label>
+
+                        <input type="checkbox">
+
+                        Remember Me
+
+                    </label>
+
+                    <a href="#">
+
+                        Forgot Password?
+
+                    </a>
+
+                </div>
+
+                <!-- Login Button -->
+
+                <button type="submit">
+
+                    <i class="fa-solid fa-right-to-bracket"></i>
+
+                    Login
+
+                </button>
+
+            </form>
+
+            <p class="register-link">
+
+                Don't have an account?
+
+                <a href="{{ url_for('register') }}">
+
+                    Register
+
+                </a>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+const password = document.getElementById("password");
+const toggle = document.getElementById("togglePassword");
+
+toggle.onclick = function(){
+
+    if(password.type === "password"){
+
+        password.type = "text";
+
+        toggle.classList.remove("fa-eye");
+
+        toggle.classList.add("fa-eye-slash");
+
+    }
+
+    else{
+
+        password.type = "password";
+
+        toggle.classList.remove("fa-eye-slash");
+
+        toggle.classList.add("fa-eye");
+
+    }
+
+}
+
+</script>
+
+</body>
+
+</html>

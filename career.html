@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Career Role | Skill Navigator</title>
+
+
+    <!-- COMMON CSS -->
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/common.css') }}">
+
+
+    <!-- CAREER CSS -->
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/career.css') }}">
+
+
+    <!-- FONT AWESOME -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+<div class="page-wrapper">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+         <!-- BRAND -->
+        <div class="brand">
+
+            <div class="brand-icon">
+                <i class="fa-solid fa-brain"></i><br>
+            </div>
+
+            
+        
+            <div class="brand-text">
+                <h2>Skill Navigator</h2>
+                <span>AI Career Guidance</span>
+            </div>
+
+        </div>
+
+
+        <ul class="menu">
+
+            <!-- Home -->
+             <li>
+                
+                <a href="{{ url_for('home') }}">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+
+            <!-- Dashboard -->
+            <li>
+
+                <a href="{{ url_for('dashboard') }}">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    <span>Dashboard</span>
+
+                </a>
+
+            </li>
+
+
+            <!-- Profile -->
+            <li>
+
+                <a href="{{ url_for('profile') }}">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    <span>Profile</span>
+
+                </a>
+
+            </li>
+
+
+            <!-- Career Role -->
+            <li class="active">
+
+                <a href="{{ url_for('career') }}">
+
+                    <i class="fa-solid fa-briefcase"></i>
+
+                    <span>Career Role</span>
+
+                </a>
+
+            </li>
+
+            <!-- Skill Match -->
+            <li>
+
+                <a href="{{ url_for('skill_match') }}">
+
+                    <i class="fa-solid fa-code-compare"></i>
+
+                    <span>Skill Match</span>
+
+                </a>
+
+            </li>
+
+            <!-- Skill Gap -->
+            <li>
+
+                <a href="{{ url_for('skill_gap') }}">
+
+                    <i class="fa-solid fa-chart-column"></i>
+
+                    <span>Skill Gap</span>
+
+                </a>
+
+            </li>
+
+
+            <!-- Roadmap -->
+            <li>
+
+                <a href="{{ url_for('roadmap') }}">
+
+                    <i class="fa-solid fa-route"></i>
+
+                    <span>Roadmap</span>
+
+                </a>
+
+            </li>
+
+
+            <!-- Report -->
+            <li>
+
+                <a href="{{ url_for('report') }}">
+
+                    <i class="fa-solid fa-file-lines"></i>
+
+                    <span>Report</span>
+
+                </a>
+
+            </li>
+
+
+            <!-- Logout -->
+            <li class="logout">
+
+                <a href="{{ url_for('logout') }}">
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                    <span>Logout</span>
+
+                </a>
+
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             HEADER
+        ================================================== -->
+
+        <div class="top-header">
+
+            <div>
+
+                <span class="small-title">
+                    CAREER PLANNING
+                </span>
+
+                <h1>
+                    Choose Your Career Role
+                </h1>
+
+                <p>
+                    Select your preferred career path and tell us about your current skills.
+                </p>
+
+            </div>
+
+
+            <div class="user-area">
+
+                <div class="user-info">
+
+                    <strong>
+                        {{ session.get('username', 'User') }}
+                    </strong>
+
+                    <span>
+                        Career Planning
+                    </span>
+
+                </div>
+
+
+                <div class="user-icon">
+
+                    <i class="fa-solid fa-briefcase"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             FLASH MESSAGE
+        ================================================== -->
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+
+            {% if messages %}
+
+                <div class="flash-container">
+
+                    {% for category, message in messages %}
+
+                        <div class="flash-message {{ category }}">
+
+                            {% if category == "success" %}
+
+                                <i class="fa-solid fa-circle-check"></i>
+
+                            {% elif category == "danger" %}
+
+                                <i class="fa-solid fa-circle-exclamation"></i>
+
+                            {% else %}
+
+                                <i class="fa-solid fa-circle-info"></i>
+
+                            {% endif %}
+
+                            <span>
+                                {{ message }}
+                            </span>
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% endif %}
+
+        {% endwith %}
+
+
+        <!-- =================================================
+             CAREER CARD
+        ================================================== -->
+
+        <div class="career-card">
+
+
+            <!-- SECTION TITLE -->
+
+            <div class="section-title">
+
+                <div class="section-icon">
+
+                    <i class="fa-solid fa-compass"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Career Preference
+                    </h2>
+
+                    <p>
+                        Choose the career role you want to pursue
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 FORM
+            ================================================== -->
+
+            <form method="POST">
+
+
+                <!-- CAREER ROLE -->
+
+                <div class="form-group">
+
+                    <label>
+
+                        <i class="fa-solid fa-briefcase"></i>
+
+                        Preferred Career Role
+
+                    </label>
+
+
+                    <select
+                        name="career_role"
+                        required>
+
+                        <option value="">
+
+                            Select your career role
+
+                        </option>
+
+
+                        {% for role in career_roles %}
+
+                            <option
+                                value="{{ role }}"
+
+                                {% if career_data and career_data.career_role == role %}
+                                    selected
+                                {% endif %}>
+
+                                {{ role }}
+
+                            </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+
+                <!-- CURRENT SKILLS -->
+
+                <div class="form-group">
+
+                    <label>
+
+                        <i class="fa-solid fa-code"></i>
+
+                        Your Current Skills
+
+                    </label>
+
+
+                    <textarea
+                        name="current_skills"
+                        placeholder="Example: Python, SQL, Pandas, HTML, CSS"
+                        required>{% if career_data %}{{ career_data.current_skills }}{% endif %}</textarea>
+
+
+                    <small>
+
+                        Enter the skills you currently know,
+                        separated by commas.
+
+                    </small>
+
+                </div>
+
+
+                <!-- SAVE BUTTON -->
+
+                <button type="submit">
+
+                    Save Career Preference
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- =================================================
+             INFO CARDS
+        ================================================== -->
+
+        <div class="info-grid">
+
+
+            <!-- DATASET -->
+
+            <div class="info-card">
+
+                <i class="fa-solid fa-database"></i>
+
+                <h3>
+                    Dataset Based
+                </h3>
+
+                <p>
+                    Career roles are loaded directly from the project dataset.
+                </p>
+
+            </div>
+
+
+            <!-- SKILL ANALYSIS -->
+
+            <div class="info-card">
+
+                <i class="fa-solid fa-chart-simple"></i>
+
+                <h3>
+                    Skill Analysis
+                </h3>
+
+                <p>
+                    Your current skills will be compared with your selected career role.
+                </p>
+
+            </div>
+
+
+            <!-- ROADMAP -->
+
+            <div class="info-card">
+
+                <i class="fa-solid fa-route"></i>
+
+                <h3>
+                    Career Roadmap
+                </h3>
+
+                <p>
+                    Your skill gaps will help generate a personalized learning roadmap.
+                </p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>

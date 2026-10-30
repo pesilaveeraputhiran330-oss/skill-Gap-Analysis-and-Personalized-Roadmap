@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Skill Navigator</title>
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <div class="container">
+
+        <div class="logo">
+
+            <i class="fa-solid fa-graduation-cap"></i>
+
+            <h2>Skill<span>Navigator</span></h2>
+
+        </div>
+
+        <nav>
+
+            <a href="#">Home</a>
+
+            <a href="#features">Features</a>
+
+            <a href="#about">About</a>
+
+            <a href="#works">How It Works</a>
+
+            <a href="#contact">Contact</a>
+
+        </nav>
+
+        <div class="buttons">
+
+            <a href="{{ url_for('login') }}" class="login">
+                Login
+            </a>
+
+            <a href="{{ url_for('register') }}" class="register">
+                Register
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="container hero-flex">
+
+        <!-- LEFT -->
+
+        <div class="hero-left">
+
+            <h1>
+
+                Skill Gap Analysis &
+
+                Personalized
+
+                <span>Roadmap</span>
+
+                Generator
+
+            </h1>
+
+            <p>
+
+                Identify your skill gaps, receive AI-powered
+                recommendations, and follow a personalized
+                learning roadmap to achieve your dream career.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="{{ url_for('register') }}" class="start">
+
+                    <i class="fa-solid fa-rocket"></i>
+
+                    Get Started
+
+                </a>
+
+                <a href="{{ url_for('login') }}" class="explore">
+
+                    <i class="fa-solid fa-right-to-bracket"></i>
+
+                    Login
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT -->
+
+        <div class="hero-right">
+
+            <div class="circle"></div>
+
+            <img src="{{ url_for('static', filename='images/hero.png') }}"
+                 alt="Hero Image">
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ================= STATS ================= -->
+
+<section class="stats-section">
+
+    <div class="container">
+
+        <div class="stats">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+
+                <h2>1000+</h2>
+
+                <p>Active Students</p>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-book-open"></i>
+                </div>
+
+                <h2>250+</h2>
+
+                <p>Learning Courses</p>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+
+                <h2>50+</h2>
+
+                <p>Career Paths</p>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+
+                <h2>AI</h2>
+
+                <p>Powered Analysis</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="features" id="features">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <h2>Our Features</h2>
+
+            <p>
+                Everything you need to achieve your dream career.
+            </p>
+
+        </div>
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+
+                <div class="feature-icon blue">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                </div>
+
+                <h3>Skill Gap Analysis</h3>
+
+                <p>
+
+                    Analyze your current skills and identify
+                    missing competencies using AI.
+
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <div class="feature-icon purple">
+
+                    <i class="fa-solid fa-road"></i>
+
+                </div>
+
+                <h3>Learning Roadmap</h3>
+
+                <p>
+
+                    Get a personalized roadmap to learn the
+                    right skills in the correct order.
+
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <div class="feature-icon green">
+
+                    <i class="fa-solid fa-book-open"></i>
+
+                </div>
+
+                <h3>Course Suggestions</h3>
+
+                <p>
+
+                    Receive recommended online courses and
+                    resources for every missing skill.
+
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <div class="feature-icon orange">
+
+                    <i class="fa-solid fa-chart-column"></i>
+
+                </div>
+
+                <h3>Progress Tracking</h3>
+
+                <p>
+
+                    Track your learning progress with
+                    interactive dashboards and reports.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ================= ABOUT ================= -->
+
+<section class="about" id="about">
+
+    <div class="container about-flex">
+
+        <div class="about-image">
+
+            <img src="{{ url_for('static', filename='images/about.png') }}"
+                 alt="About">
+
+        </div>
+
+        <div class="about-content">
+
+            <h2>
+
+                Why Choose
+
+                <span>Skill Navigator?</span>
+
+            </h2>
+
+            <p>
+
+                Skill Navigator is an AI-powered platform that helps
+                students and professionals identify skill gaps,
+                discover personalized learning paths, and prepare
+                for future careers through intelligent recommendations.
+
+            </p>
+
+            <div class="about-list">
+
+                <div>
+
+                    <i class="fa-solid fa-check"></i>
+
+                    AI Powered Skill Gap Analysis
+
+                </div>
+
+                <div>
+
+                    <i class="fa-solid fa-check"></i>
+
+                    Personalized Learning Roadmap
+
+                </div>
+
+                <div>
+
+                    <i class="fa-solid fa-check"></i>
+
+                    Industry Recommended Courses
+
+                </div>
+
+                <div>
+
+                    <i class="fa-solid fa-check"></i>
+
+                    Progress Monitoring Dashboard
+
+                </div>
+
+            </div>
+
+            <a href="{{ url_for('register') }}" class="about-btn">
+
+                Start Your Journey
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= HOW IT WORKS ================= -->
+
+<section class="works" id="works">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <h2>How It Works</h2>
+
+            <p>
+
+                Complete your learning journey in four simple steps.
+
+            </p>
+
+        </div>
+
+        <div class="works-grid">
+
+            <div class="work-card">
+
+                <div class="number">01</div>
+
+                <i class="fa-solid fa-user-plus"></i>
+
+                <h3>Create Account</h3>
+
+                <p>
+
+                    Register and create your personal profile.
+
+                </p>
+
+            </div>
+
+            <div class="work-card">
+
+                <div class="number">02</div>
+
+                <i class="fa-solid fa-file-circle-check"></i>
+
+                <h3>Skill Assessment</h3>
+
+                <p>
+
+                    Analyze your current skills and career goals.
+
+                </p>
+
+            </div>
+
+            <div class="work-card">
+
+                <div class="number">03</div>
+
+                <i class="fa-solid fa-route"></i>
+
+                <h3>AI Roadmap</h3>
+
+                <p>
+
+                    Get a personalized roadmap with recommended courses.
+
+                </p>
+
+            </div>
+
+            <div class="work-card">
+
+                <div class="number">04</div>
+
+                <i class="fa-solid fa-trophy"></i>
+
+                <h3>Achieve Success</h3>
+
+                <p>
+
+                    Complete your roadmap and become job-ready.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ================= CONTACT ================= -->
+
+<section class="contact" id="contact">
+
+    <div class="container">
+
+        <div class="contact-box">
+
+            <h2>Start Your Career Journey Today</h2>
+
+            <p>
+
+                Join thousands of students improving their skills with
+                AI-powered career guidance and personalized learning roadmaps.
+
+            </p>
+
+            <div class="contact-buttons">
+
+                <a href="{{ url_for('register') }}" class="start">
+
+                    <i class="fa-solid fa-user-plus"></i>
+
+                    Get Started
+
+                </a>
+
+                <a href="{{ url_for('login') }}" class="explore">
+
+                    <i class="fa-solid fa-right-to-bracket"></i>
+
+                    Login
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="container footer-grid">
+
+        <!-- Company -->
+
+        <div>
+
+            <h2>
+
+                <i class="fa-solid fa-graduation-cap"></i>
+
+                Skill<span>Navigator</span>
+
+            </h2>
+
+            <p>
+
+                AI Powered Skill Gap Analysis and
+                Personalized Roadmap Generator for students
+                and professionals.
+
+            </p>
+
+        </div>
+
+        <!-- Links -->
+
+        <div>
+
+            <h3>Quick Links</h3>
+
+            <ul>
+
+                <li><a href="#">Home</a></li>
+
+                <li><a href="#features">Features</a></li>
+
+                <li><a href="#about">About</a></li>
+
+                <li><a href="#works">How It Works</a></li>
+
+                <li><a href="#contact">Contact</a></li>
+
+            </ul>
+
+        </div>
+
+        <!-- Contact -->
+
+        <div>
+
+            <h3>Contact</h3>
+
+            <p>
+
+                <i class="fa-solid fa-envelope"></i>
+
+                support@skillnavigator.com
+
+            </p>
+
+            <p>
+
+                <i class="fa-solid fa-phone"></i>
+
+                +91 98765 43210
+
+            </p>
+
+            <p>
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                Chennai, Tamil Nadu
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <div class="copyright">
+
+        © 2026 Skill Navigator | All Rights Reserved.
+
+    </div>
+
+</footer>
+
+<!-- ================= SCRIPT ================= -->
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

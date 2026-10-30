@@ -1,0 +1,1674 @@
+/* ==========================================
+   GOOGLE FONT
+========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+
+/* ==========================================
+   RESET
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* ==========================================
+   BODY
+========================================== */
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    color: #ffffff;
+
+    overflow-x: hidden;
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.45)
+        ),
+        url("../images/common-pg.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+/* ==========================================
+   DASHBOARD LAYOUT
+========================================== */
+
+.dashboard {
+    display: flex;
+
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+/* ==========================================
+   SIDEBAR
+========================================== */
+
+.sidebar {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 270px;
+    height: 100vh;
+
+    padding: 30px 20px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    z-index: 1000;
+
+    background: rgba(
+        0,
+        0,
+        0,
+        0.22
+    );
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    border-right:
+        1px solid
+        rgba(255, 255, 255, 0.15);
+}
+
+
+/* ==========================================
+   SIDEBAR SCROLLBAR
+========================================== */
+
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+
+    background:
+        rgba(
+            45,
+            183,
+            255,
+            0.45
+        );
+
+    border-radius: 20px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+
+    background:
+        rgba(
+            45,
+            183,
+            255,
+            0.75
+        );
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 45px;
+}
+
+
+/* =========================================================
+   BRAND ICON
+========================================================= */
+
+.brand-icon {
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 14px;
+
+    background:
+        rgba(45, 183, 255, 0.15);
+
+    border:
+        1px solid
+        rgba(45, 183, 255, 0.25);
+
+    box-shadow:
+        0 0 20px
+        rgba(45, 183, 255, 0.12);
+}
+
+.brand-icon i {
+
+    font-size: 28px;
+
+    color: #2db7ff;
+
+    text-shadow:
+        0 0 15px
+        rgba(45, 183, 255, 0.5);
+}
+
+
+/* =========================================================
+   BRAND TEXT
+========================================================= */
+
+.brand-text {
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+}
+
+.brand-text h2 {
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    color: #ffffff;
+
+    white-space: nowrap;
+}
+
+.brand-text span {
+
+    color:
+        rgba(255, 255, 255, 0.70);
+
+    font-size: 11px;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MENU
+========================================== */
+
+.menu {
+
+    list-style: none;
+}
+
+.menu li {
+
+    margin-bottom: 15px;
+}
+
+.menu li a {
+
+    text-decoration: none;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.88
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 15px 18px;
+
+    border-radius: 12px;
+
+    transition:
+        all 0.35s ease;
+
+    font-size: 14px;
+
+    font-weight: 500;
+}
+
+.menu li a i {
+
+    width: 22px;
+
+    text-align: center;
+
+    font-size: 16px;
+}
+
+
+/* ==========================================
+   MENU HOVER
+========================================== */
+
+.menu li:hover a {
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.10
+        );
+
+    color: #ffffff;
+
+    transform:
+        translateX(6px);
+}
+
+
+/* ==========================================
+   ACTIVE MENU
+========================================== */
+
+.menu .active a {
+
+    background:
+        rgba(
+            45,
+            183,
+            255,
+            0.25
+        );
+
+    border:
+        1px solid
+        rgba(
+            45,
+            183,
+            255,
+            0.35
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 5px 20px
+        rgba(
+            45,
+            183,
+            255,
+            0.15
+        );
+}
+
+
+/* ==========================================
+   LOGOUT
+========================================== */
+
+.logout {
+
+    margin-top: 35px;
+}
+
+.logout a {
+
+    background:
+        rgba(
+            220,
+            53,
+            69,
+            0.35
+        ) !important;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            100,
+            110,
+            0.25
+        );
+
+    color: #ffffff !important;
+}
+
+.logout a:hover {
+
+    background:
+        rgba(
+            220,
+            53,
+            69,
+            0.55
+        ) !important;
+}
+
+
+/* ==========================================
+   MAIN CONTENT
+========================================== */
+
+.main-content {
+
+    margin-left: 270px;
+
+    width:
+        calc(
+            100% - 270px
+        );
+
+    min-height: 100vh;
+
+    padding: 35px;
+
+    background: transparent;
+
+    overflow: visible;
+}
+
+
+/* ==========================================
+   TOPBAR
+========================================== */
+
+.topbar {
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    align-items: center;
+
+    padding: 25px 35px;
+
+    margin-bottom: 35px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.18
+        );
+
+    box-shadow:
+        0 8px 30px
+        rgba(
+            0,
+            0,
+            0,
+            0.15
+        );
+}
+
+
+/* ==========================================
+   TOPBAR TITLE
+========================================== */
+
+.topbar h1 {
+
+    font-size: 30px;
+
+    margin-bottom: 8px;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            0.30
+        );
+}
+
+.topbar p {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.82
+        );
+
+    font-size: 13px;
+
+    line-height: 26px;
+}
+
+
+/* ==========================================
+   USER BOX
+========================================== */
+
+.user-box {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+}
+
+.user-box > i {
+
+    font-size: 22px;
+
+    color: #5eead4;
+
+    cursor: pointer;
+}
+
+
+/* ==========================================
+   PROFILE
+========================================== */
+
+.profile {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 12px 22px;
+
+    border-radius: 40px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.15
+        );
+}
+
+.profile i {
+
+    font-size: 36px;
+
+    color: #5eead4;
+}
+
+.profile span {
+
+    color: #ffffff;
+
+    font-size: 18px;
+
+    font-weight: 600;
+}
+
+
+/* ==========================================
+   FLASH MESSAGE
+========================================== */
+
+.alert {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 14px 18px;
+
+    margin-bottom: 22px;
+
+    border-radius: 12px;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    animation: fadeIn 0.5s ease;
+}
+
+
+/* ==========================================
+   SUCCESS ALERT
+========================================== */
+
+.alert.success {
+
+    color: #a7f3d0;
+
+    background:
+        rgba(
+            6,
+            95,
+            70,
+            0.40
+        );
+
+    border:
+        1px solid
+        rgba(
+            45,
+            212,
+            191,
+            0.25
+        );
+
+    border-left:
+        4px solid #2dd4bf;
+}
+
+
+/* ==========================================
+   DANGER ALERT
+========================================== */
+
+.alert.danger {
+
+    color: #fecdd3;
+
+    background:
+        rgba(
+            127,
+            29,
+            29,
+            0.40
+        );
+
+    border:
+        1px solid
+        rgba(
+            251,
+            113,
+            133,
+            0.25
+        );
+
+    border-left:
+        4px solid #fb7185;
+}
+
+
+/* ==========================================
+   FLASH ICON
+========================================== */
+
+.alert i {
+
+    font-size: 18px;
+
+    flex-shrink: 0;
+}
+
+
+/* ==========================================
+   FLASH ANIMATION
+========================================== */
+
+@keyframes fadeIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(-10px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* ==========================================
+   STATISTICS
+========================================== */
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 25px;
+
+    margin-bottom: 40px;
+}
+
+
+/* ==========================================
+   STAT CARD
+========================================== */
+
+.stat-card {
+
+    padding: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.07
+        );
+
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.15
+        );
+
+    box-shadow:
+        0 8px 25px
+        rgba(
+            0,
+            0,
+            0,
+            0.15
+        );
+
+    transition:
+        all 0.35s ease;
+}
+
+.stat-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
+
+    border-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.25
+        );
+}
+
+.stat-card i {
+
+    font-size: 32px;
+
+    color: #5eead4;
+
+    background:
+        rgba(
+            45,
+            183,
+            255,
+            0.15
+        );
+
+    padding: 18px;
+
+    border-radius: 50%;
+}
+
+.stat-card h2 {
+
+    font-size: 26px;
+
+    color: #ffffff;
+
+    margin-bottom: 5px;
+}
+
+.stat-card p {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.78
+        );
+
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   FEATURE CARDS
+========================================== */
+
+.cards {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 28px;
+
+    margin-bottom: 40px;
+}
+
+
+/* ==========================================
+   CARD
+========================================== */
+
+.card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 30px;
+
+    text-align: center;
+
+    border-radius: 22px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.07
+        );
+
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.16
+        );
+
+    box-shadow:
+        0 10px 30px
+        rgba(
+            0,
+            0,
+            0,
+            0.15
+        );
+
+    transition:
+        all 0.35s ease;
+}
+
+.card:hover {
+
+    transform:
+        translateY(-10px);
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
+
+    border-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.28
+        );
+}
+
+
+/* ==========================================
+   CARD ICON
+========================================== */
+
+.card i {
+
+    font-size: 42px;
+
+    color: #5eead4;
+
+    margin-bottom: 18px;
+
+    text-shadow:
+        0 0 15px
+        rgba(
+            45,
+            183,
+            255,
+            0.35
+        );
+}
+
+.card h2 {
+
+    color: #ffffff;
+
+    font-size: 21px;
+
+    margin-bottom: 15px;
+}
+
+.card p {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.82
+        );
+
+    line-height: 28px;
+
+    font-size: 13px;
+
+    min-height: 85px;
+
+    margin-bottom: 25px;
+}
+
+.card a {
+
+    text-decoration: none;
+}
+
+
+/* ==========================================
+   BUTTON
+========================================== */
+
+.card button {
+
+    border: none;
+
+    outline: none;
+
+    padding: 13px 30px;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(20, 184, 166, 0.85),
+            rgba(15, 118, 110, 0.85)
+        );
+
+    color: #ffffff;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        all 0.35s ease;
+}
+
+.card button:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(
+            20,
+            184,
+            166,
+            0.25
+        );
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(45, 212, 191, 0.90),
+            rgba(15, 118, 110, 0.90)
+        );
+}
+
+
+/* ==========================================
+   CARD LIGHT EFFECT
+========================================== */
+
+.card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -100%;
+    left: -100%;
+
+    width: 220%;
+    height: 220%;
+
+    background:
+        linear-gradient(
+            45deg,
+            transparent,
+            rgba(
+                255,
+                255,
+                255,
+                0.08
+            ),
+            transparent
+        );
+
+    transform:
+        rotate(25deg);
+
+    transition:
+        0.6s;
+
+    pointer-events: none;
+}
+
+.card:hover::before {
+
+    top: 100%;
+    left: 100%;
+}
+
+
+/* ==========================================
+   PROGRESS SECTION
+========================================== */
+
+.progress-section {
+
+    display: grid;
+
+    grid-template-columns:
+        2fr 1fr;
+
+    gap: 30px;
+
+    margin-bottom: 40px;
+}
+
+
+/* ==========================================
+   PROGRESS CARD
+========================================== */
+
+.progress-card {
+
+    padding: 30px;
+
+    border-radius: 22px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.07
+        );
+
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.16
+        );
+
+    box-shadow:
+        0 10px 30px
+        rgba(
+            0,
+            0,
+            0,
+            0.15
+        );
+}
+
+.progress-card h2 {
+
+    margin-bottom: 25px;
+
+    color: #ffffff;
+
+    font-size: 21px;
+}
+
+
+/* ==========================================
+   PROGRESS ITEMS
+========================================== */
+
+.progress-item {
+
+    margin-bottom: 22px;
+}
+
+.progress-item span {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.85
+        );
+
+    font-size: 13px;
+}
+
+.progress-bar {
+
+    width: 100%;
+
+    height: 12px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.15
+        );
+
+    border-radius: 50px;
+
+    overflow: hidden;
+}
+
+.progress {
+
+    height: 100%;
+
+    border-radius: 50px;
+}
+
+
+/* ==========================================
+   SKILL PROGRESS
+========================================== */
+
+.python {
+
+    width: 90%;
+
+    background: #4cafef;
+}
+
+.sql {
+
+    width: 80%;
+
+    background: #36d399;
+}
+
+.html {
+
+    width: 95%;
+
+    background: #f59e0b;
+}
+
+.ml {
+
+    width: 60%;
+
+    background: #8b5cf6;
+}
+
+
+/* ==========================================
+   CAREER PROGRESS
+========================================== */
+
+.progress-card ul {
+
+    list-style: none;
+}
+
+.progress-card ul li {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.82
+        );
+
+    font-size: 14px;
+}
+
+.progress-card ul li i {
+
+    margin-right: 10px;
+
+    color: #5eead4;
+}
+
+
+/* ==========================================
+   COURSES
+========================================== */
+
+.courses {
+
+    margin-bottom: 40px;
+}
+
+.courses h2 {
+
+    margin-bottom: 25px;
+
+    font-size: 24px;
+
+    color: #ffffff;
+}
+
+.course-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 25px;
+}
+
+
+/* ==========================================
+   COURSE CARD
+========================================== */
+
+.course-card {
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.07
+        );
+
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.15
+        );
+
+    box-shadow:
+        0 8px 25px
+        rgba(
+            0,
+            0,
+            0,
+            0.15
+        );
+
+    transition:
+        all 0.35s ease;
+}
+
+.course-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
+}
+
+.course-card i {
+
+    font-size: 38px;
+
+    color: #5eead4;
+
+    margin-bottom: 18px;
+}
+
+.course-card h3 {
+
+    color: #ffffff;
+
+    margin-bottom: 10px;
+
+    font-size: 18px;
+}
+
+.course-card p {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.75
+        );
+
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+footer {
+
+    margin-top: 30px;
+
+    padding: 20px;
+
+    text-align: center;
+
+    border-top:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.15
+        );
+}
+
+footer p {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.65
+        );
+
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   SCROLLBAR
+========================================== */
+
+::-webkit-scrollbar {
+
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+
+    background:
+        rgba(
+            45,
+            183,
+            255,
+            0.70
+        );
+
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-track {
+
+    background:
+        rgba(
+            0,
+            0,
+            0,
+            0.20
+        );
+}
+
+
+/* ==========================================
+   RESPONSIVE - 1200px
+========================================== */
+
+@media(max-width:1200px) {
+
+    .stats {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .cards {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .course-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .progress-section {
+
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ==========================================
+   RESPONSIVE - 900px
+========================================== */
+
+@media(max-width:900px) {
+
+    .sidebar {
+
+        width: 220px;
+    }
+
+    .main-content {
+
+        margin-left: 220px;
+
+        width:
+            calc(
+                100% - 220px
+            );
+
+        padding: 25px;
+    }
+
+    .topbar {
+
+        padding: 22px;
+    }
+
+    .topbar h1 {
+
+        font-size: 26px;
+    }
+}
+
+
+/* ==========================================
+   MOBILE - 768px
+========================================== */
+
+@media(max-width:768px) {
+
+    .dashboard {
+
+        flex-direction: column;
+    }
+
+    .sidebar {
+
+        position: relative;
+
+        width: 100%;
+
+        height: auto;
+
+        padding: 20px;
+
+        overflow-y: visible;
+    }
+
+    .main-content {
+
+        margin-left: 0;
+
+        width: 100%;
+
+        padding: 20px;
+    }
+
+    .topbar {
+
+        flex-direction: column;
+
+        gap: 20px;
+
+        text-align: center;
+    }
+
+    .user-box {
+
+        justify-content: center;
+    }
+
+    .stats {
+
+        grid-template-columns: 1fr;
+    }
+
+    .cards {
+
+        grid-template-columns: 1fr;
+    }
+
+    .course-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .progress-section {
+
+        grid-template-columns: 1fr;
+    }
+
+    .profile {
+
+        justify-content: center;
+    }
+
+    .logo {
+
+        justify-content: center;
+    }
+
+    .menu li a {
+
+        justify-content: center;
+    }
+}
+
+
+/* ==========================================
+   SMALL MOBILE - 480px
+========================================== */
+
+@media(max-width:480px) {
+
+    .main-content {
+
+        padding: 15px;
+    }
+
+    .topbar {
+
+        padding: 20px 15px;
+    }
+
+    .topbar h1 {
+
+        font-size: 22px;
+    }
+
+    .topbar p {
+
+        font-size: 12px;
+
+        line-height: 22px;
+    }
+
+    .user-box {
+
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+    .stat-card {
+
+        padding: 20px;
+    }
+
+    .stat-card i {
+
+        font-size: 28px;
+
+        padding: 14px;
+    }
+
+    .stat-card h2 {
+
+        font-size: 23px;
+    }
+
+    .card {
+
+        padding: 25px 20px;
+    }
+
+    .progress-card {
+
+        padding: 22px;
+    }
+
+    .course-card {
+
+        padding: 25px 20px;
+    }
+
+    .alert {
+
+        font-size: 13px;
+
+        padding: 12px 14px;
+    }
+}

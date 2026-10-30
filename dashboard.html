@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard - Skill Navigator</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Dashboard CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+         <!-- BRAND -->
+        <div class="brand">
+
+            <div class="brand-icon">
+                <i class="fa-solid fa-brain"></i><br>
+            </div>
+
+            
+        
+            <div class="brand-text">
+                <h2>Skill Navigator</h2>
+                <span>AI Career Guidance</span>
+            </div>
+
+        </div>
+
+
+        <ul class="menu">
+
+
+            <!-- Home -->
+             <li>
+                
+                <a href="{{ url_for('home') }}">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+
+            <!-- Dashboard -->
+            <li class="active">
+
+                <a href="{{ url_for('dashboard') }}">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    <span>Dashboard</span>
+
+                </a>
+
+            </li>
+
+
+            <!-- Profile -->
+            <li>
+
+                <a href="{{ url_for('profile') }}">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    <span>Profile</span>
+
+                </a>
+
+            </li>
+
+
+            <!-- Career Role -->
+            <li>
+
+                <a href="{{ url_for('career') }}">
+
+                    <i class="fa-solid fa-briefcase"></i>
+
+                    <span>Career Role</span>
+
+                </a>
+
+            </li>
+
+            <!-- Skill Match -->
+            <li>
+
+                <a href="{{ url_for('skill_match') }}">
+
+                    <i class="fa-solid fa-code-compare"></i>
+
+                    <span>Skill Match</span>
+
+                </a>
+
+            </li>
+
+            <!-- Skill Gap -->
+            <li>
+
+                <a href="{{ url_for('skill_gap') }}">
+
+                    <i class="fa-solid fa-chart-column"></i>
+
+                    <span>Skill Gap</span>
+
+                </a>
+
+            </li>            
+
+            <!-- Roadmap -->
+            <li>
+
+                <a href="{{ url_for('roadmap') }}">
+
+                    <i class="fa-solid fa-route"></i>
+
+                    <span>Roadmap</span>
+
+                </a>
+
+            </li>
+
+
+            <!-- Report -->
+            <li>
+
+                <a href="{{ url_for('report') }}">
+
+                    <i class="fa-solid fa-file-lines"></i>
+
+                    <span>Report</span>
+
+                </a>
+
+            </li>
+
+
+            <!-- Logout -->
+            <li class="logout">
+
+                <a href="{{ url_for('logout') }}">
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                    <span>Logout</span>
+
+                </a>
+
+            </li>
+
+        </ul>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <div class="topbar">
+
+            <div>
+
+                <h1>Welcome back, {{ username }}!</h1>
+
+                <p>
+                    
+                    Continue your career journey with Skill Navigator.
+                </p>
+
+            </div>
+
+
+            <div class="user-box">
+
+                <i class="fa-solid fa-bell"></i>
+
+                <div class="profile">
+
+                    <i class="fa-solid fa-circle-user"></i>
+
+                    <span>{{ username }}</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             FLASH MESSAGE
+        ================================================== -->
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+
+            {% if messages %}
+
+                {% for category, message in messages %}
+
+                    <div class="alert {{ category }}">
+
+                        {% if category == "success" %}
+
+                            <i class="fa-solid fa-circle-check"></i>
+
+                        {% elif category == "danger" %}
+
+                            <i class="fa-solid fa-circle-exclamation"></i>
+
+                        {% else %}
+
+                            <i class="fa-solid fa-circle-info"></i>
+
+                        {% endif %}
+
+                        <span>{{ message }}</span>
+
+                    </div>
+
+                {% endfor %}
+
+            {% endif %}
+
+        {% endwith %}
+
+
+
+        <!-- =================================================
+             STATISTICS
+        ================================================== -->
+
+        <section class="stats">
+
+
+            <div class="stat-card">
+
+                <i class="fa-solid fa-user"></i>
+
+                <div>
+
+                    <h2>{{ profile_count }}</h2>
+
+                    <p>Profile</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <i class="fa-solid fa-briefcase"></i>
+
+                <div>
+
+                    <h2>{{ career_count }}</h2>
+
+                    <p>Career Selected</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <i class="fa-solid fa-lightbulb"></i>
+
+                <div>
+
+                    <h2>{{ skills_count }}</h2>
+
+                    <p>Skills Analysed</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <i class="fa-solid fa-chart-simple"></i>
+
+                <div>
+
+                    <h2>AI</h2>
+
+                    <p>Career Guidance</p>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             FEATURE CARDS
+        ================================================== -->
+
+        <section class="cards">
+
+
+            <!-- Profile -->
+
+            <div class="card">
+
+                <i class="fa-solid fa-user-pen"></i>
+
+                <h2>Create Profile</h2>
+
+                <p>
+                    Add your personal information, qualification,
+                    current skills and career interests.
+                </p>
+
+                <a href="{{ url_for('profile') }}">
+
+                    <button>
+                        Go to Profile
+                    </button>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- Career -->
+
+            <div class="card">
+
+                <i class="fa-solid fa-briefcase"></i>
+
+                <h2>Career Role</h2>
+
+                <p>
+                    Select your preferred career role and
+                    enter your current skills.
+                </p>
+
+                <a href="{{ url_for('career') }}">
+
+                    <button>
+                        Select Career
+                    </button>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- Skill Gap -->
+
+            <div class="card">
+
+                <i class="fa-solid fa-chart-column"></i>
+
+                <h2>Skill Gap Analysis</h2>
+
+                <p>
+                    Find the skills you already have and identify
+                    the skills required for your selected career.
+                </p>
+
+                <a href="{{ url_for('skill_gap') }}">
+
+                    <button>
+                        Analyze Skills
+                    </button>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- Skill Match -->
+
+            <div class="card">
+
+                <i class="fa-solid fa-code-compare"></i>
+
+                <h2>Skill Match</h2>
+
+                <p>
+                    Compare your current skills with the required
+                    skills for your selected career role.
+                </p>
+
+                <a href="{{ url_for('skill_match') }}">
+
+                    <button>
+                        Check Match
+                    </button>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- Roadmap -->
+
+            <div class="card">
+
+                <i class="fa-solid fa-route"></i>
+
+                <h2>Career Roadmap</h2>
+
+                <p>
+                    Follow a structured learning roadmap to
+                    improve your skills and reach your career goal.
+                </p>
+
+                <a href="{{ url_for('roadmap') }}">
+
+                    <button>
+                        View Roadmap
+                    </button>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- Report -->
+
+            <div class="card">
+
+                <i class="fa-solid fa-file-lines"></i>
+
+                <h2>Career Report</h2>
+
+                <p>
+                    View your overall career analysis,
+                    skill match and skill gap results.
+                </p>
+
+                <a href="{{ url_for('report') }}">
+
+                    <button>
+                        View Report
+                    </button>
+
+                </a>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             PROGRESS SECTION
+        ================================================== -->
+
+        <section class="progress-section">
+
+
+            <div class="progress-card">
+
+                <h2>Skill Progress</h2>
+
+
+                <div class="progress-item">
+
+                    <span>Python</span>
+
+                    <div class="progress-bar">
+
+                        <div class="progress python"></div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="progress-item">
+
+                    <span>SQL</span>
+
+                    <div class="progress-bar">
+
+                        <div class="progress sql"></div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="progress-item">
+
+                    <span>HTML / CSS</span>
+
+                    <div class="progress-bar">
+
+                        <div class="progress html"></div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="progress-item">
+
+                    <span>Machine Learning</span>
+
+                    <div class="progress-bar">
+
+                        <div class="progress ml"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="progress-card">
+
+                <h2>Career Journey</h2>
+
+                <ul>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Profile Creation
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Career Selection
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-arrow-right"></i>
+                        Skill Analysis
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-lock"></i>
+                        Career Roadmap
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             COURSES
+        ================================================== -->
+
+        <section class="courses">
+
+            <h2>Recommended Learning Areas</h2>
+
+
+            <div class="course-grid">
+
+
+                <div class="course-card">
+
+                    <i class="fa-brands fa-python"></i>
+
+                    <h3>Python</h3>
+
+                    <p>
+                        Programming fundamentals and advanced Python.
+                    </p>
+
+                </div>
+
+
+                <div class="course-card">
+
+                    <i class="fa-solid fa-database"></i>
+
+                    <h3>SQL</h3>
+
+                    <p>
+                        Database management and SQL queries.
+                    </p>
+
+                </div>
+
+
+                <div class="course-card">
+
+                    <i class="fa-solid fa-brain"></i>
+
+                    <h3>Machine Learning</h3>
+
+                    <p>
+                        ML algorithms and predictive modelling.
+                    </p>
+
+                </div>
+
+
+                <div class="course-card">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    <h3>Data Analysis</h3>
+
+                    <p>
+                        Data analysis and visualization techniques.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer>
+
+            <p>
+                © 2026 Skill Navigator | AI Career Guidance
+            </p>
+
+        </footer>
+
+
+    </main>
+
+</div>
+
+</body>
+
+</html>

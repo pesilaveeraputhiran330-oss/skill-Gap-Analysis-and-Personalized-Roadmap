@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Profile | Skill Navigator</title>
+
+    <!-- Common CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/common.css') }}">
+
+    <!-- Profile CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/profile.css') }}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+
+<body>
+
+<div class="page-wrapper">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+         <!-- BRAND -->
+        <div class="brand">
+
+            <div class="brand-icon">
+                <i class="fa-solid fa-brain"></i><br>
+            </div>
+
+            
+        
+            <div class="brand-text">
+                <h2>Skill Navigator</h2>
+                <span>AI Career Guidance</span>
+            </div>
+
+        </div>
+
+
+        <ul class="menu">
+
+            <!-- Home -->
+             <li>
+                
+                <a href="{{ url_for('home') }}">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+
+            <!-- Dashboard -->
+            <li>
+
+                <a href="{{ url_for('dashboard') }}">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    <span>Dashboard</span>
+
+                </a>
+
+            </li>
+
+
+            <!-- Profile -->
+            <li class="active">
+
+                <a href="{{ url_for('profile') }}">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    <span>Profile</span>
+
+                </a>
+
+            </li>
+
+
+            <!-- Career Role -->
+            <li>
+
+                <a href="{{ url_for('career') }}">
+
+                    <i class="fa-solid fa-briefcase"></i>
+
+                    <span>Career Role</span>
+
+                </a>
+
+            </li>
+
+            <!-- Skill Match -->
+            <li>
+
+                <a href="{{ url_for('skill_match') }}">
+
+                    <i class="fa-solid fa-code-compare"></i>
+
+                    <span>Skill Match</span>
+
+                </a>
+
+            </li>
+
+            <!-- Skill Gap -->
+            <li>
+
+                <a href="{{ url_for('skill_gap') }}">
+
+                    <i class="fa-solid fa-chart-column"></i>
+
+                    <span>Skill Gap</span>
+
+                </a>
+
+            </li>            
+
+            <!-- Roadmap -->
+            <li>
+
+                <a href="{{ url_for('roadmap') }}">
+
+                    <i class="fa-solid fa-route"></i>
+
+                    <span>Roadmap</span>
+
+                </a>
+
+            </li>
+
+
+            <!-- Report -->
+            <li>
+
+                <a href="{{ url_for('report') }}">
+
+                    <i class="fa-solid fa-file-lines"></i>
+
+                    <span>Report</span>
+
+                </a>
+
+            </li>
+
+
+            <!-- Logout -->
+            <li class="logout">
+
+                <a href="{{ url_for('logout') }}">
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                    <span>Logout</span>
+
+                </a>
+
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             HEADER
+        ================================================== -->
+
+        <div class="top-header">
+
+            <div>
+
+                <span class="small-title">
+                    PERSONAL PROFILE
+                </span>
+
+                <h1>
+                    My Profile
+                </h1>
+
+                <p>
+                    Complete your profile to receive
+                    personalized career recommendations.
+                </p>
+
+            </div>
+
+
+            <div class="user-area">
+
+                <div class="user-info">
+
+                    <strong>
+                        {{ profile.full_name if profile else 'User' }}
+                    </strong>
+
+                    <span>
+                        Skill Navigator
+                    </span>
+
+                </div>
+
+                <div class="user-icon">
+                    <i class="fa-solid fa-user-gear"></i>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             FLASH MESSAGE
+        ================================================== -->
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+
+            {% if messages %}
+
+                <div class="flash-container">
+
+                    {% for category, message in messages %}
+
+                        <div class="flash-message {{ category }}">
+
+                            {% if category == "success" %}
+
+                                <i class="fa-solid fa-circle-check"></i>
+
+                            {% elif category == "danger" %}
+
+                                <i class="fa-solid fa-circle-exclamation"></i>
+
+                            {% else %}
+
+                                <i class="fa-solid fa-circle-info"></i>
+
+                            {% endif %}
+
+                            <span>
+                                {{ message }}
+                            </span>
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% endif %}
+
+        {% endwith %}
+
+
+        <!-- =================================================
+             PROFILE CARD
+        ================================================== -->
+
+        <div class="profile-card">
+
+
+            <!-- CARD HEADING -->
+
+            <div class="card-heading">
+
+                <div class="heading-icon">
+
+                    <i class="fa-solid fa-id-card"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>
+                        Personal Information
+                    </h2>
+
+                    <p>
+                        Tell us about yourself
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 PROFILE FORM
+            ================================================== -->
+
+            <form method="POST"
+                  action="{{ url_for('profile') }}">
+
+
+                <!-- FULL NAME -->
+
+                <div class="input-group">
+
+                    <label>
+                        <i class="fa-solid fa-user"></i>
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        name="full_name"
+                        placeholder="Enter your full name"
+                        value="{{ profile.full_name if profile else '' }}"
+                        required>
+
+                </div>
+
+
+                <!-- AGE -->
+
+                <div class="input-group">
+
+                    <label>
+                        <i class="fa-solid fa-cake-candles"></i>
+                        Age
+                    </label>
+
+                    <input
+                        type="number"
+                        name="age"
+                        min="16"
+                        max="60"
+                        placeholder="Enter your age"
+                        value="{{ profile.age if profile else '' }}"
+                        required>
+
+                </div>
+
+
+                <!-- GENDER -->
+
+                <div class="input-group">
+
+                    <label>
+                        <i class="fa-solid fa-venus-mars"></i>
+                        Gender
+                    </label>
+
+                    <select name="gender" required>
+
+                        <option value="">
+                            Select Gender
+                        </option>
+
+                        <option
+                            value="Male"
+                            {% if profile and profile.gender == "Male" %}
+                                selected
+                            {% endif %}>
+                            Male
+                        </option>
+
+                        <option
+                            value="Female"
+                            {% if profile and profile.gender == "Female" %}
+                                selected
+                            {% endif %}>
+                            Female
+                        </option>
+
+                        <option
+                            value="Other"
+                            {% if profile and profile.gender == "Other" %}
+                                selected
+                            {% endif %}>
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- USER CATEGORY -->
+
+                <div class="input-group">
+
+                    <label>
+                        <i class="fa-solid fa-user-tag"></i>
+                        User Category
+                    </label>
+
+                    <select
+                        name="user_category"
+                        required>
+
+                        <option value="">
+                            Select Category
+                        </option>
+
+                        <option
+                            value="College Student"
+                            {% if profile and profile.user_category == "College Student" %}
+                                selected
+                            {% endif %}>
+                            College Student
+                        </option>
+
+                        <option
+                            value="Fresher"
+                            {% if profile and profile.user_category == "Fresher" %}
+                                selected
+                            {% endif %}>
+                            Fresher
+                        </option>
+
+                        <option
+                            value="Job Seeker"
+                            {% if profile and profile.user_category == "Job Seeker" %}
+                                selected
+                            {% endif %}>
+                            Job Seeker
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- QUALIFICATION -->
+
+                <div class="input-group">
+
+                    <label>
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        Qualification
+                    </label>
+
+                    <input
+                        type="text"
+                        name="qualification"
+                        placeholder="Example: B.E CSE / B.Tech IT"
+                        value="{{ profile.qualification if profile else '' }}"
+                        required>
+
+                </div>
+
+
+                <!-- TECHNICAL SKILLS -->
+
+                <div class="input-group full-width">
+
+                    <label>
+                        <i class="fa-solid fa-laptop-code"></i>
+                        Technical Skills
+                    </label>
+
+                    <textarea
+                        name="skills"
+                        rows="4"
+                        placeholder="Example: Python, Java, HTML, CSS, SQL"
+                        required>{{ profile.skills if profile else '' }}</textarea>
+
+                </div>
+
+
+                <!-- CAREER INTEREST -->
+
+                <div class="input-group full-width">
+
+                    <label>
+                        <i class="fa-solid fa-bullseye"></i>
+                        Career Interest
+                    </label>
+
+                    <select
+                        name="career_interest"
+                        id="career_interest"
+                        required>
+
+                        <option value="">
+                            Select Career
+                        </option>
+
+                        {% for role in career_roles %}
+
+                            <option
+                                value="{{ role }}"
+                                {% if profile and profile.career_interest == role %}
+                                    selected
+                                {% endif %}>
+
+                                {{ role }}
+
+                            </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+
+                <!-- BUTTONS -->
+
+                <div class="button-group">
+
+                    <button
+                        type="submit"
+                        class="save-btn">
+
+                        <i class="fa-solid fa-check"></i>
+
+                        Save Profile
+
+                    </button>
+
+
+                    <a
+                        href="{{ url_for('dashboard') }}"
+                        class="back-btn">
+
+                        <i class="fa-solid fa-arrow-left"></i>
+
+                        Back to Dashboard
+
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>

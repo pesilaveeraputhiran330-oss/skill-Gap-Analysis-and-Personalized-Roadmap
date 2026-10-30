@@ -1,0 +1,2379 @@
+/* =========================================================
+   LEARNING ROADMAP
+   Skill Navigator - AI Career Guidance
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+
+    font-family: 'Poppins', sans-serif;
+
+    color: #ffffff;
+
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            
+            rgba(0, 0, 0, 0.45)
+        ),
+        url("../images/common-pg.png");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-attachment: fixed;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.container {
+
+    display: flex;
+
+    min-height: 100vh;
+}
+
+/* ==========================================
+   DASHBOARD LAYOUT
+========================================== */
+
+.dashboard {
+    display: flex;
+
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+/* ==========================================
+   SIDEBAR
+========================================== */
+
+.sidebar {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 270px;
+    height: 100vh;
+
+    padding: 30px 20px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    z-index: 1000;
+
+    background: rgba(
+        0,
+        0,
+        0,
+        0.22
+    );
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    border-right:
+        1px solid
+        rgba(255, 255, 255, 0.15);
+}
+
+
+/* ==========================================
+   SIDEBAR SCROLLBAR
+========================================== */
+
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+
+    background:
+        rgba(
+            45,
+            183,
+            255,
+            0.45
+        );
+
+    border-radius: 20px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+
+    background:
+        rgba(
+            45,
+            183,
+            255,
+            0.75
+        );
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 45px;
+}
+
+
+/* =========================================================
+   BRAND ICON
+========================================================= */
+
+.brand-icon {
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 14px;
+
+    background:
+        rgba(45, 183, 255, 0.15);
+
+    border:
+        1px solid
+        rgba(45, 183, 255, 0.25);
+
+    box-shadow:
+        0 0 20px
+        rgba(45, 183, 255, 0.12);
+}
+
+.brand-icon i {
+
+    font-size: 28px;
+
+    color: #2db7ff;
+
+    text-shadow:
+        0 0 15px
+        rgba(45, 183, 255, 0.5);
+}
+
+
+/* =========================================================
+   BRAND TEXT
+========================================================= */
+
+.brand-text {
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+}
+
+.brand-text h2 {
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    color: #ffffff;
+
+    white-space: nowrap;
+}
+
+.brand-text span {
+
+    color:
+        rgba(255, 255, 255, 0.70);
+
+    font-size: 11px;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   MENU
+========================================== */
+
+.menu {
+
+    list-style: none;
+}
+
+.menu li {
+
+    margin-bottom: 15px;
+}
+
+.menu li a {
+
+    text-decoration: none;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.88
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 15px 18px;
+
+    border-radius: 12px;
+
+    transition:
+        all 0.35s ease;
+
+    font-size: 14px;
+
+    font-weight: 500;
+}
+
+.menu li a i {
+
+    width: 22px;
+
+    text-align: center;
+
+    font-size: 16px;
+}
+
+
+/* ==========================================
+   MENU HOVER
+========================================== */
+
+.menu li:hover a {
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.10
+        );
+
+    color: #ffffff;
+
+    transform:
+        translateX(6px);
+}
+
+
+/* ==========================================
+   ACTIVE MENU
+========================================== */
+
+.menu .active a {
+
+    background:
+        rgba(
+            45,
+            183,
+            255,
+            0.25
+        );
+
+    border:
+        1px solid
+        rgba(
+            45,
+            183,
+            255,
+            0.35
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 5px 20px
+        rgba(
+            45,
+            183,
+            255,
+            0.15
+        );
+}
+
+
+/* ==========================================
+   LOGOUT
+========================================== */
+
+.logout {
+
+    margin-top: 35px;
+}
+
+.logout a {
+
+    background:
+        rgba(
+            220,
+            53,
+            69,
+            0.35
+        ) !important;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            100,
+            110,
+            0.25
+        );
+
+    color: #ffffff !important;
+}
+
+.logout a:hover {
+
+    background:
+        rgba(
+            220,
+            53,
+            69,
+            0.55
+        ) !important;
+}
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.main-content {
+
+    margin-left: 270px;
+
+    width: calc(100% - 270px);
+
+    padding: 30px 40px 60px;
+}
+
+
+/* =========================================================
+   TOPBAR
+========================================================= */
+
+.topbar {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+
+.page-label {
+
+    color: #5eead4;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    letter-spacing: 1.5px;
+}
+
+
+.topbar h1 {
+
+    font-size: 30px;
+
+    margin-top: 5px;
+
+    font-weight: 700;
+}
+
+/* =========================================================
+   USER AREA
+========================================================= */
+
+.user-area {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    flex-shrink: 0;
+}
+
+.user-info {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+}
+
+.user-info strong {
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.user-info span {
+    color: #8da1af;
+
+    font-size: 12px;
+
+    margin-top: 2px;
+}
+
+.user-icon {
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(45, 183, 255, 0.12);
+
+    border: 1px solid rgba(45, 183, 255, 0.20);
+
+    color: #5eead4;
+
+    font-size: 16px;
+}
+
+   
+
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.roadmap-intro {
+
+    padding: 27px 30px;
+
+    margin-bottom: 25px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(28, 168, 255, 0.18),
+            rgba(11, 32, 41, 0.90)
+        );
+
+    border:
+        1px solid
+        rgba(45, 183, 255, 0.20);
+}
+
+
+.small-title {
+
+    color: #5eead4;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: 1.5px;
+}
+
+
+.roadmap-intro h2 {
+
+    font-size: 26px;
+
+    margin-top: 7px;
+}
+
+
+.roadmap-intro p {
+
+    color: #aebdca;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    margin-top: 7px;
+}
+
+
+/* =========================================================
+   SUMMARY
+========================================================= */
+
+.roadmap-summary {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+
+    margin-bottom: 25px;
+}
+
+
+.roadmap-stat {
+
+    padding: 22px;
+
+    background:
+        rgba(11, 32, 41, 0.88);
+
+    border:
+        1px solid
+        rgba(45, 183, 255, 0.14);
+
+    border-radius: 16px;
+
+    transition: 0.3s ease;
+}
+
+
+.roadmap-stat:hover {
+
+    transform: translateY(-4px);
+
+    border-color:
+        rgba(45, 183, 255, 0.35);
+}
+
+
+.roadmap-stat i {
+
+    color: #5eead4;
+
+    font-size: 20px;
+}
+
+
+.roadmap-stat h3 {
+
+    font-size: 25px;
+
+    margin-top: 7px;
+}
+
+
+.roadmap-stat p {
+
+    color: #91a4b3;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   CAREER READINESS
+========================================================= */
+
+.progress-box {
+
+    padding: 23px;
+
+    margin-bottom: 22px;
+
+    background:
+        rgba(11, 32, 41, 0.88);
+
+    border:
+        1px solid
+        rgba(45, 183, 255, 0.14);
+
+    border-radius: 17px;
+}
+
+
+.progress-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 12px;
+}
+
+
+.progress-header span {
+
+    color: #b8c6d1;
+
+    font-size: 13px;
+}
+
+
+.progress-header strong {
+
+    color: #5eead4;
+
+    font-size: 14px;
+}
+
+
+.progress-bar {
+
+    width: 100%;
+
+    height: 9px;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+
+.progress-fill {
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(20, 184, 166, 0.90),
+            rgba(15, 118, 110, 0.90)
+        );
+
+    border-radius: 20px;
+
+    transition:
+        width 0.5s ease;
+}
+
+
+/* =========================================================
+   OVERALL LEARNING PROGRESS
+========================================================= */
+
+.learning-progress-box {
+
+    padding: 23px;
+
+    margin-bottom: 22px;
+
+    background:
+        rgba(11, 32, 41, 0.92);
+
+    border:
+        1px solid
+        rgba(45, 183, 255, 0.18);
+
+    border-radius: 17px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.12);
+}
+
+
+.learning-progress-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 13px;
+}
+
+
+.progress-label {
+
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+.learning-progress-header p {
+
+    margin-top: 5px;
+
+    color: #8298a8;
+
+    font-size: 11px;
+}
+
+
+.learning-progress-header strong {
+
+    color: #5eead4;
+
+    font-size: 20px;
+}
+
+
+.learning-progress-bar {
+
+    width: 100%;
+
+    height: 10px;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+
+.learning-progress-fill {
+
+    height: 100%;
+
+    width: 0%;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(20, 184, 166, 0.90),
+            rgba(15, 118, 110, 0.90)
+        );
+
+    border-radius: 20px;
+
+    transition:
+        width 0.5s ease;
+}
+
+
+.overall-progress-info {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 9px;
+
+    color: #718795;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   CURRENT LEARNING
+========================================================= */
+
+.current-learning {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    margin-bottom: 28px;
+
+    padding: 18px 20px;
+
+    background:
+        rgba(45, 183, 255, 0.06);
+
+    border:
+        1px solid
+        rgba(45, 183, 255, 0.16);
+
+    border-radius: 15px;
+
+    transition: 0.3s ease;
+}
+
+
+.current-learning-icon {
+
+    width: 50px;
+
+    height: 50px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 12px;
+
+    background:
+        rgba(45, 183, 255, 0.12);
+
+    color: #5eead4;
+
+    font-size: 20px;
+}
+
+
+.current-learning-content {
+
+    min-width: 0;
+}
+
+
+.current-label {
+
+    color: #5eead4;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.2px;
+}
+
+
+.current-learning-content h3 {
+
+    margin-top: 3px;
+
+    font-size: 15px;
+}
+
+
+.current-learning-content p {
+
+    margin-top: 4px;
+
+    color: #8499a8;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   SECTION TITLE
+========================================================= */
+
+.roadmap-section {
+
+    margin-top: 28px;
+}
+
+
+.section-title {
+
+    margin-bottom: 20px;
+}
+
+
+.section-title h2 {
+
+    font-size: 21px;
+}
+
+
+.section-title h2 i {
+
+    color: #5eead4;
+
+    margin-right: 7px;
+}
+
+
+.section-title p {
+
+    color: #8fa4b3;
+
+    font-size: 13px;
+
+    margin-top: 5px;
+}
+
+
+/* =========================================================
+   TIMELINE
+========================================================= */
+
+.timeline {
+
+    position: relative;
+
+    padding-left: 38px;
+}
+
+
+.timeline::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 14px;
+
+    top: 0;
+
+    bottom: 0;
+
+    width: 2px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(20, 184, 166, 0.90),
+            rgba(15, 118, 110, 0.90)
+        );
+}
+
+
+/* =========================================================
+   ROADMAP STEP
+========================================================= */
+
+.roadmap-step {
+
+    position: relative;
+
+    margin-bottom: 22px;
+
+    padding: 25px;
+
+    background:
+        rgba(11, 32, 41, 0.90);
+
+    border:
+        1px solid
+        rgba(45, 183, 255, 0.14);
+
+    border-radius: 18px;
+
+    transition: 0.3s ease;
+}
+
+
+.roadmap-step:hover {
+
+    transform: translateX(5px);
+
+    border-color:
+        rgba(45, 183, 255, 0.35);
+
+    box-shadow:
+        0 12px 30px
+        rgba(0, 0, 0, 0.18);
+}
+
+
+/* =========================================================
+   STEP NUMBER
+========================================================= */
+
+.step-number {
+
+    position: absolute;
+
+    left: -38px;
+
+    top: 24px;
+
+    width: 30px;
+
+    height: 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #07151c;
+
+    border:
+        2px solid
+        #5eead4;
+
+    color: #5eead4;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    z-index: 2;
+
+    transition: 0.3s ease;
+}
+
+
+/* Completed timeline circle */
+
+.roadmap-step.skill-completed
+.step-number {
+
+    background: #5eead4;
+
+    color: #07151c;
+
+    box-shadow:
+        0 0 18px
+        rgba(45, 183, 255, 0.35);
+}
+
+
+/* =========================================================
+   STEP HEADER
+========================================================= */
+
+.step-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 15px;
+}
+
+
+.skill-header-left {
+
+    min-width: 0;
+}
+
+
+.skill-title-row {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+}
+
+
+.step-header h3 {
+
+    font-size: 18px;
+}
+
+
+.step-header p {
+
+    color: #8ea2b1;
+
+    font-size: 13px;
+
+    margin-top: 4px;
+}
+
+
+/* =========================================================
+   LEVEL
+========================================================= */
+
+.level {
+
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(45, 183, 255, 0.10);
+
+    border:
+        1px solid
+        rgba(45, 183, 255, 0.18);
+
+    color: #5eead4;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   LEARNING STATUS
+========================================================= */
+
+.learning-status {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+.status-not-started {
+
+    color: #aebdca;
+
+    background:
+        rgba(255, 255, 255, 0.06);
+}
+
+
+.status-progress {
+
+    color: #ffd18a;
+
+    background:
+        rgba(255, 180, 60, 0.10);
+}
+
+
+.status-completed {
+
+    color: #9fe7c0;
+
+    background:
+        rgba(50, 200, 120, 0.10);
+}
+
+
+/* =========================================================
+   SKILL PROGRESS
+========================================================= */
+
+.skill-progress-section {
+
+    margin-top: 20px;
+}
+
+
+.skill-progress-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 7px;
+}
+
+
+.skill-progress-header span {
+
+    color: #899dab;
+
+    font-size: 13px;
+}
+
+
+.skill-progress-header strong {
+
+    color: #5eead4;
+
+    font-size: 13px;
+}
+
+
+.skill-progress-bar {
+
+    width: 100%;
+
+    height: 6px;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+
+.skill-progress-fill {
+
+    width: 0%;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(20, 184, 166, 0.90),
+            rgba(15, 118, 110, 0.90)
+        );
+
+    border-radius: 20px;
+
+    transition:
+        width 0.4s ease;
+}
+
+
+/* =========================================================
+   TOPICS HEADING
+========================================================= */
+
+.topics-heading {
+
+    margin-top: 20px;
+
+    margin-bottom: 10px;
+
+    color: #b9c8d2;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+.topics-heading i {
+
+    color: #5eead4;
+
+    margin-right: 5px;
+}
+
+
+/* =========================================================
+   TOPIC LIST
+========================================================= */
+
+.topic-list {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 9px;
+}
+
+
+/* =========================================================
+   TOPIC ITEM
+========================================================= */
+
+.topic-item {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 11px 12px;
+
+    background:
+        rgba(255, 255, 255, 0.04);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.07);
+
+    border-radius: 9px;
+
+    cursor: pointer;
+
+    transition:
+        0.25s ease;
+}
+
+
+.topic-item:hover {
+
+    background:
+        rgba(45, 183, 255, 0.07);
+
+    border-color:
+        rgba(45, 183, 255, 0.22);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   CHECKBOX
+========================================================= */
+
+.topic-checkbox {
+
+    position: absolute;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+.topic-check {
+
+    width: 18px;
+
+    height: 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.20);
+
+    border-radius: 5px;
+
+    color: transparent;
+
+    font-size: 9px;
+
+    transition:
+        0.2s ease;
+}
+
+
+.topic-checkbox:checked
++ .topic-check {
+
+    background: #2db7ff;
+
+    border-color: #2db7ff;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 0 10px
+        rgba(45, 183, 255, 0.18);
+}
+
+
+.topic-checkbox:checked
++ .topic-check
++ .topic-text {
+
+    color: #718795;
+
+    text-decoration: line-through;
+}
+
+
+.topic-text {
+
+    color: #c4d0d9;
+
+    font-size: 12px;
+
+    line-height: 1.4;
+
+    transition: 0.2s ease;
+}
+
+
+/* =========================================================
+   STEP FOOTER
+========================================================= */
+
+.step-footer {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-top: 20px;
+
+    padding-top: 16px;
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.07);
+}
+
+
+.step-meta {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    flex-wrap: wrap;
+}
+
+
+.duration {
+
+    color: #91a4b3;
+
+    font-size: 12px;
+}
+
+
+.duration i {
+
+    color: #5eead4;
+
+    margin-right: 5px;
+}
+
+
+.topic-count {
+
+    color: #718795;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   LEARNING BUTTON
+========================================================= */
+
+.learning-btn {
+
+    border: none;
+
+    padding: 9px 15px;
+
+    border-radius: 9px;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(20, 184, 166, 0.90),
+            rgba(15, 118, 110, 0.90)
+        );
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+
+.learning-btn:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 7px 18px
+        rgba(37, 117, 252, 0.25);
+}
+
+
+.learning-btn:active {
+
+    transform: translateY(0);
+}
+
+
+.learning-btn.completed-btn {
+
+    background:
+        rgba(50, 200, 120, 0.12);
+
+    color: #9fe7c0;
+
+    border:
+        1px solid
+        rgba(50, 200, 120, 0.20);
+}
+
+
+/* =========================================================
+   SAVE MESSAGE
+========================================================= */
+
+.save-message {
+
+    display: none;
+
+    margin-top: 10px;
+
+    color: #78d7a8;
+
+    font-size: 9px;
+
+    text-align: right;
+}
+
+
+.save-message.show {
+
+    display: block;
+
+    animation:
+        saveMessage 0.3s ease;
+}
+
+
+@keyframes saveMessage {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(3px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+}
+
+
+/* =========================================================
+   RESOURCES
+========================================================= */
+
+.resources {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 18px;
+}
+
+
+.resource-card {
+
+    padding: 22px;
+
+    background:
+        rgba(11, 32, 41, 0.88);
+
+    border:
+        1px solid
+        rgba(45, 183, 255, 0.14);
+
+    border-radius: 16px;
+
+    transition: 0.3s ease;
+}
+
+
+.resource-card:hover {
+
+    transform: translateY(-4px);
+
+    border-color:
+        rgba(45, 183, 255, 0.32);
+}
+
+
+.resource-card h3 {
+
+    font-size: 15px;
+}
+
+
+.resource-card h3 i {
+
+    color: #5eead4;
+
+    margin-right: 7px;
+}
+
+
+.resource-card p {
+
+    color: #91a4b3;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+
+    margin-top: 7px;
+}
+
+
+.resource-link {
+
+    display: inline-block;
+
+    margin-top: 13px;
+
+    color: #5eead4;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+.resource-link:hover {
+
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.roadmap-action {
+
+    margin-top: 30px;
+
+    display: flex;
+
+    gap: 15px;
+}
+
+
+.btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 12px 20px;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    transition: 0.3s ease;
+}
+
+
+.btn-primary {
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(20, 184, 166, 0.90),
+            rgba(15, 118, 110, 0.90)
+        );
+}
+
+
+.btn-primary:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(37, 117, 252, 0.25);
+}
+
+
+.btn-secondary {
+
+    color: #b9c9d5;
+
+    background:
+        rgba(255, 255, 255, 0.06);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.10);
+}
+
+
+.btn-secondary:hover {
+
+    color: #ffffff;
+
+    border-color:
+        rgba(45, 183, 255, 0.30);
+}
+
+
+/* =========================================================
+   EMPTY ROADMAP
+========================================================= */
+
+.empty-roadmap {
+
+    min-height: 400px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 50px;
+
+    background:
+        rgba(11, 32, 41, 0.88);
+
+    border:
+        1px solid
+        rgba(45, 183, 255, 0.14);
+
+    border-radius: 20px;
+}
+
+
+.empty-icon {
+
+    width: 75px;
+
+    height: 75px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(45, 183, 255, 0.10);
+
+    color: #5eead4;
+
+    font-size: 30px;
+
+    margin-bottom: 20px;
+}
+
+
+.empty-roadmap h2 {
+
+    font-size: 22px;
+}
+
+
+.empty-roadmap p {
+
+    max-width: 500px;
+
+    color: #91a4b3;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    margin: 10px 0 25px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .sidebar {
+
+        width: 220px;
+    }
+
+
+    .main-content {
+
+        margin-left: 220px;
+
+        width: calc(100% - 220px);
+
+        padding: 25px;
+    }
+
+
+    .roadmap-summary {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .resources {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .topic-list {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .sidebar {
+
+        width: 70px;
+
+        padding: 20px 10px;
+    }
+
+
+    .sidebar .logo h2,
+    .sidebar .logo p,
+    .sidebar-menu a span {
+
+        display: none;
+    }
+
+
+    .sidebar-menu a {
+
+        justify-content: center;
+    }
+
+
+    .main-content {
+
+        margin-left: 70px;
+
+        width: calc(100% - 70px);
+
+        padding: 20px;
+    }
+
+
+    .topbar h1 {
+
+        font-size: 23px;
+    }
+
+
+    .user-name {
+
+        display: none;
+    }
+
+
+    .step-header {
+
+        flex-direction: column;
+    }
+
+
+    .step-footer {
+
+        align-items: flex-start;
+
+        gap: 12px;
+
+        flex-direction: column;
+    }
+
+
+    .learning-btn {
+
+        width: 100%;
+    }
+
+
+    .roadmap-action {
+
+        flex-direction: column;
+    }
+
+
+    .roadmap-intro h2 {
+
+        font-size: 21px;
+    }
+
+
+    .current-learning {
+
+        align-items: flex-start;
+    }
+
+
+    .overall-progress-info {
+
+        flex-direction: column;
+
+        gap: 4px;
+    }
+
+}
+
+
+/* =========================================================
+   DASHBOARD-MATCHED PREMIUM GLASS EFFECT
+   Layout / spacing / typography / functionality unchanged
+   ========================================================= */
+
+/* Main roadmap glass boxes */
+.roadmap-intro,
+.roadmap-stat,
+.progress-box,
+.learning-progress-box,
+.current-learning,
+.roadmap-step,
+.resource-card,
+.empty-roadmap {
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.07
+        );
+
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.16
+        );
+
+    box-shadow:
+        0 8px 25px
+        rgba(
+            0,
+            0,
+            0,
+            0.15
+        );
+
+    transition:
+        all 0.35s ease;
+}
+
+
+/* Roadmap intro */
+.roadmap-intro {
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    border-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.18
+        );
+
+    box-shadow:
+        0 8px 30px
+        rgba(
+            0,
+            0,
+            0,
+            0.15
+        );
+}
+
+
+/* Statistics */
+.roadmap-stat {
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.07
+        );
+}
+
+.roadmap-stat:hover {
+
+    transform:
+        translateY(-8px);
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
+
+    border-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.25
+        );
+
+    box-shadow:
+        0 12px 30px
+        rgba(
+            0,
+            0,
+            0,
+            0.20
+        );
+}
+
+
+/* Career readiness */
+.progress-box {
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.07
+        );
+}
+
+
+/* Overall learning progress */
+.learning-progress-box {
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.07
+        );
+
+    border-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.16
+        );
+
+    box-shadow:
+        0 10px 30px
+        rgba(
+            0,
+            0,
+            0,
+            0.15
+        );
+}
+
+
+/* Current learning */
+.current-learning {
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.07
+        );
+
+    border-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.16
+        );
+
+    box-shadow:
+        0 8px 25px
+        rgba(
+            0,
+            0,
+            0,
+            0.15
+        );
+}
+
+
+/* Roadmap timeline cards */
+.roadmap-step {
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.07
+        );
+
+    border-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.16
+        );
+
+    box-shadow:
+        0 10px 30px
+        rgba(
+            0,
+            0,
+            0,
+            0.15
+        );
+}
+
+.roadmap-step:hover {
+
+    transform:
+        translateX(5px);
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
+
+    border-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.28
+        );
+
+    box-shadow:
+        0 12px 30px
+        rgba(
+            0,
+            0,
+            0,
+            0.20
+        );
+}
+
+
+/* Topic mini boxes */
+.topic-item {
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.05
+        );
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.10
+        );
+
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.topic-item:hover {
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.10
+        );
+
+    border-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.20
+        );
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* Resource cards */
+.resource-card {
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.07
+        );
+
+    border-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.16
+        );
+
+    box-shadow:
+        0 8px 25px
+        rgba(
+            0,
+            0,
+            0,
+            0.15
+        );
+}
+
+.resource-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
+
+    border-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.25
+        );
+}
+
+
+/* Empty roadmap */
+.empty-roadmap {
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.07
+        );
+
+    border-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.16
+        );
+
+    box-shadow:
+        0 10px 30px
+        rgba(
+            0,
+            0,
+            0,
+            0.15
+        );
+}
